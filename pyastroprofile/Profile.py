@@ -169,10 +169,12 @@ class Profile:
         self._config.write()
 
     def read(self):
+        logging.debug(f'Profile.read(): filename = {self._get_config_filename()}')
         try:
             config = ConfigObj(self._get_config_filename(), unrepr=True,
                                file_error=True, raise_errors=True)
-        except:
+        except Exception:
+            logging.error('Error creating config object in Profile.read()', exc_info=True)
             config = None
 
         if config is None:
