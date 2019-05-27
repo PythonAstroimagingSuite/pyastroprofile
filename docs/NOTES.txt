@@ -1,0 +1,39 @@
+Profiles
+--------
+
+Profiles are configobj objects modified to have attributes which you can get
+and set.
+
+Depending on the operating system the config files will be stored under a
+top level base directory.
+
+When a profile object is created the relative directory under the base OS config
+directory is specified as well as a name for the profile file.  Usually these
+have a '.ini' extension but this is not requrired.
+
+If no filename is provideed then a default profile will be searched for by
+looking for a file called DEFAULT_PROFILE with the contents:
+
+    default=<profilename>
+
+which specifies the filename of the default profile.
+
+The default for a given profile directory can be set with the
+set_default_profile() function, and can be retrieved with the
+get_default_profile() function.
+
+A list of the profiles available can be retrieved with find_profiles().
+
+Observatory Profile
+-------------------
+This profile stores the info for an observing location.  Internally it is
+stored as lat/lon/alt/name/tz, but usually one will get or set the
+'observer' attribute which is an astroplan observer object.
+
+Equipment Profile
+-----------------
+This profile just stores strings for the driver names for the camera, mount,
+focuser and filterwheel in use.  Different profiles can be used for each
+imaging setup, for example.  Also using the default profile mechanism one
+can set the default equipment profile and all the programs needing to
+use equipment can get it without having to specify it to each on the command line.
