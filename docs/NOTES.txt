@@ -11,8 +11,11 @@ When a profile object is created the relative directory under the base OS config
 directory is specified as well as a name for the profile file.  Usually these
 have a '.ini' extension but this is not requrired.
 
-If no filename is provideed then a default profile will be searched for by
-looking for a file called DEFAULT_PROFILE with the contents:
+If no relative directory is given then the default is 'astroprofiles'.
+
+If no filename or a filename of 'default' (case sensitive!) is provideed
+then a default profile will be searched for by looking for a file called
+DEFAULT_PROFILE with the contents:
 
     default=<profilename>
 

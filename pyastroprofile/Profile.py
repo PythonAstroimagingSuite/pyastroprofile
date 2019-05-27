@@ -72,9 +72,11 @@ class Profile:
 
         reldir - location relative to top of default config location
               ex. "hfdfocus/devices" would create the dir "hfdfocus/device"
-        name - name of config file
 
-        loc = "hfdfocus/devices" and name = "C8F7.ini" would create
+        name - name of config file
+               If set to None then a default will be searched for.
+
+        reldir = "hfdfocus/devices" and name = "C8F7.ini" would create
         a file  <configbasedir>/hfdfocus/C8F7.ini
 
         Will raise NoDefaultProfile is name is None and no profile is defined
@@ -84,7 +86,7 @@ class Profile:
         self._config_reldir = reldir
 
         # if name is none see if a default exists
-        if name == None:
+        if name == None or name == 'default':
             name = self._find_default()
             if name is None:
                 raise NoDefaultProfile
