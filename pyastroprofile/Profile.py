@@ -134,6 +134,16 @@ class Profile:
         else:
             super().__setattr__(attr, value)
 
+    def get(self, attr, value=None):
+        try:
+            logging.debug(f'Profile.get() attr = {attr}')
+            curval = self.__getattr__(attr)
+            logging.debug(f'curval = {curval}')
+        except KeyError:
+            logging.debug('attr not found')
+            return value
+        return curval
+
     def _get_config_dir(self):
         if os.name == 'nt':
             base_config_dir = get_base_config_dir()
@@ -182,4 +192,7 @@ class Profile:
             return False
 
         self._config.merge(config)
+
+        logging.debug(f'read profile is {self._config}')
+
         return True

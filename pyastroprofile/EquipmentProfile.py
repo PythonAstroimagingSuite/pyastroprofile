@@ -12,3 +12,8 @@ class EquipmentProfile(Profile):
         self.focuser_driver = None
         self.filterwheel_driver = None
 
+        self.focuser_max_pos = None
+        self.focuser_min_pos = None
+        self.focuser_pref_dir = None
+
+
