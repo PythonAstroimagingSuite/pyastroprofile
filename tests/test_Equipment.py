@@ -15,10 +15,10 @@ if sys.argv[1] in ['write', 'defaultwrite']:
 
     eq = EquipmentProfile(RELDIR, fname)
 
-    eq.camera_driver = 'CCD Simulator'
-    eq.telescope_driver = 'Telescope Simulator'
-    eq.focuser_driver = 'Focuser Simulator'
-    eq.filterwheel_driver = 'FilterWheel Simulator'
+    eq.camera.driver = 'CCD Simulator'
+    eq.mount.driver = 'Telescope Simulator'
+    eq.focuser.driver = 'Focuser Simulator'
+    eq.filterwheel.driver = 'FilterWheel Simulator'
     eq.write()
 elif sys.argv[1] in ['read', 'defaultread']:
     if sys.argv[1] == 'read':
@@ -32,11 +32,15 @@ elif sys.argv[1] in ['read', 'defaultread']:
     logging.info(f'rc for read is {rc}')
 
     logging.info('read core info')
-    logging.info(f'eq.camera_driver = {eq.camera_driver}')
-    logging.info(f'eq.telescope_driver = {eq.telescope_driver}')
-    logging.info(f'eq.focuser_driver = {eq.focuser_driver}')
-    logging.info(f'eq.filterwheel_driver = {eq.filterwheel_driver}')
+    logging.info(f'eq.camera.driver = {eq.camera.driver}')
+    logging.info(f'eq.mount.driver = {eq.mount.driver}')
+    logging.info(f'eq.focuser.driver = {eq.focuser.driver}')
+    logging.info(f'eq.filterwheel.driver = {eq.filterwheel.driver}')
 
+    logging.info(f'eq.camera = {eq.camera}')
+    logging.info(f'eq.mount = {eq.mount}')
+    logging.info(f'eq.focuser = {eq.focuser}')
+    logging.info(f'eq.filterwheel = {eq.filterwheel}')
 elif sys.argv[1] == 'setdefault':
     set_default_profile(RELDIR, FNAME)
 elif sys.argv[1] == 'getdefault':
