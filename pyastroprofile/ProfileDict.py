@@ -64,6 +64,10 @@ def get_default_profile(loc):
     # zero length name is same as none
     if def_name is not None and len(def_name) < 1:
         def_name = None
+
+    # test if profile exists
+    if not os.path.isfile(def_name):
+        def_name = None
     logging.debug(f'Using default profile = {def_name}')
     return def_name
 #class Person (yaml.YAMLObject):
@@ -79,33 +83,40 @@ def get_default_profile(loc):
 #               (self .__class__.__name__, self.name, self.age)
 
 @dataclass
-class ProfileSection:
+class ProfileSection(object):
     def _property_keys(self):
-        logging.info(f'{self.__class__.__name__}._property_keys()')
-        logging.info(f'{self.__dict__}')
-        for k, v in self.__dict__.items():
-            logging.info(f'   {k}   {v}')
+#        logging.info(f'{self.__class__.__name__}._property_keys()')
+#        logging.info(f'{self.__dict__}')
+#        for k, v in self.__dict__.items():
+#            logging.info(f'   {k}   {v}')
         return sorted(x for x in self.__dict__ if x[0] != '_')
 
     def _to_dict(self):
-        logging.info(f'class {self.__class__.__name__}.to_dict():')
+        #logging.info(f'class {self.__class__.__name__}.to_dict():')
         d = {}
-        logging.info(f' property_keys = {self._property_keys()}')
-        logging.info(f' dir(self) = {dir(self)}')
+        #logging.info(f' property_keys = {self._property_keys()}')
+        #logging.info(f' dir(self) = {dir(self)}')
         for k in self._property_keys():
-            logging.info(f'   {k}  {self.__dict__[k]}')
+            #logging.info(f'   {k}  {self.__dict__[k]}')
             d[k] = self.__dict__[k]
         return d
 
     def _from_dict(self, d):
-        logging.info(f'ProfileSection _from_dict {d}')
+        #logging.info(f'ProfileSection _from_dict {d}')
         for k, v in d.items():
-            logging.info(f' copying key {k} value = {v}')
+            #logging.info(f' copying key {k} value = {v}')
             self.__dict__[k] = v
-        logging.info(f' final __dict__ = {self.__dict__}')
+        #logging.info(f' final __dict__ = {self.__dict__}')
+
+    def get(self, key, default=None):
+        try:
+            val = self.__getattribute__(key)
+        except AttributeError:
+            val = default
+        return val
 
     def __repr__(self):
-        s = f'{Aself.__class__.__name__}('
+        s = f'{self.__class__.__name__}('
         ks = self.property_keys()
         i = 0
         print(f'\n{ks}\n')
@@ -126,6 +137,7 @@ class Profile:
         """Set some defaults for program settings
 
         reldir - location relative to top of default config location
+                 If None then will be relative to current working directory!
               ex. "hfdfocus/devices" would create the dir "hfdfocus/device"
 
         name - name of config file
@@ -156,8 +168,6 @@ class Profile:
     def add_section(self, sectionclass):
         self.sections[sectionclass._sectionname] = sectionclass
         self.__dict__[sectionclass._sectionname] = sectionclass()
-        print('add_section', self.__dict__)
-
 
 #    def _find_default(self):
 #        """ See if DEFAULT_PROFILE file exists and check it for the
@@ -181,6 +191,8 @@ class Profile:
         return self._find_default()
 
     def _get_config_dir(self):
+        if self._config_reldir is None:
+            return '.'
         if os.name == 'nt':
             base_config_dir = get_base_config_dir()
             config_dir = os.path.join(base_config_dir, self._config_reldir)
@@ -216,30 +228,29 @@ class Profile:
 
         # to_dict() must be defined by child class
         dataobj = {}
-        logging.info(f'sections = {self.sections}')
+        #logging.info(f'sections = {self.sections}')
         for k, v in self.sections.items():
-            logging.info(f' added key {k} value {v()._to_dict()}')
-            dataobj[k] = v()._to_dict()
+            #logging.info(f' added key {k} value {v()._to_dict()}')
+            dataobj[k] = self.__dict__[k]._to_dict()
         #dataobj = self.to_dict()
-        logging.info(f'to_dict = {dataobj}')
+        #logging.info(f'to_dict = {dataobj}')
         yaml_f = open(self._get_config_filename(), 'w')
         yaml.dump(dataobj, stream=yaml_f, default_flow_style=False)
         yaml_f.close()
+        return True
 
     def read(self):
         yaml_f = open(self._get_config_filename(), 'r')
         d = yaml.safe_load(stream=yaml_f)
         yaml_f.close()
-        logging.debug(f'read profile is {d}')
+        #logging.debug(f'read profile is {d}')
 
         # from_dict() must be defined in child
         #self.from_dict(d)
         for k, v in d.items():
-            logging.info(f'{k} {v} = {self.sections[k]()._from_dict(v)}')
+            #logging.info(f'{k} {v} = {self.sections[k]()._from_dict(v)}')
             self.__dict__[k] = self.sections[k]()
             self.__dict__[k]._from_dict(v)
-            print('AAAAA', self.__dict__)
-
         return True
 
     def __repr__(self):

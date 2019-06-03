@@ -29,10 +29,10 @@ elif sys.argv[1] in ['read', 'defaultread']:
     logging.info(f'rc for read is {rc}')
 
     logging.info('read core info')
-    logging.info(f'obs.obsname = {obs.obsname}')
-    logging.info(f'obs.longitude = {obs.longitude}')
-    logging.info(f'obs.latitude = {obs.latitude}')
-    logging.info(f'obs.altitude = {obs.altitude}')
+    logging.info(f'obs.location.obsname = {obs.location.obsname}')
+    logging.info(f'obs.location.longitude = {obs.location.longitude}')
+    logging.info(f'obs.location.latitude = {obs.location.latitude}')
+    logging.info(f'obs.location.altitude = {obs.location.altitude}')
 
     logging.info('Dervied quantities:')
     logging.info(f'obs.observer = {obs.observer}')

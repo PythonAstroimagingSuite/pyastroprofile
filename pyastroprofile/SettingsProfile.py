@@ -5,6 +5,8 @@ from dataclasses import dataclass
 from pyastroprofile.ProfileDict import Profile, ProfileSection
 
 class SettingsProfile(Profile):
+    # where this should go under astroprofile directory hierarchy
+    _conf_rel_dir = 'settings'
 
     @dataclass
     class PlateSolveSettings(ProfileSection):
