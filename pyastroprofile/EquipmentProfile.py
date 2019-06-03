@@ -1,43 +1,34 @@
 #
 # store equipment profiles
 #
-from pyastroprofile.ProfileDict import Profile
+from dataclasses import dataclass
+
+from pyastroprofile.ProfileDict import Profile, ProfileSection
 
 class EquipmentProfile(Profile):
 
-    class Focuser:
-        driver = 'Focus Simulator'
-        minpos = 5000
-        maxpos = 10000
+    @dataclass
+    class Focuser(ProfileSection):
+        driver : str = 'Focus Simulator'
+        minpos : int = 5000
+        maxpos : int = 10000
 
-        def __repr__(self):
-            return f'Focuser(driver={self.driver}, minpos={self.minpos}, maxpos={self.maxpos})'
+    @dataclass
+    class Camera(ProfileSection):
+        driver : str = 'CCD Simulator'
 
-    class Camera:
-        driver = 'CCD Simulator'
+    @dataclass
+    class Mount(ProfileSection):
+        driver : str = 'Telescope Simulator'
 
-        def __repr__(self):
-            return f'Camera(driver={self.driver})'
+    @dataclass
+    class FilterWheel(ProfileSection):
+        driver : str = 'FilterWheel Simulator'
 
-    class Mount:
-        driver = 'Telescope Simulator'
-
-        def __repr__(self):
-            return f'Mount(driver={self.driver})'
-
-    class FilterWheel:
-        driver = 'FilterWheel Simulator'
-
-        def __repr__(self):
-            return f'FilterWheel(driver={self.driver})'
-
-    class Telescope:
-        focal_length = 800
-        aperture = 200
-
-        def __repr__(self):
-            return f'Telescope(focal_length={self.focal_length}, '\
-                   f'aperture={self.aperture})'
+    @dataclass
+    class Telescope(ProfileSection):
+        focal_length : int = 800
+        aperture : int = 200
 
     def __init__(self, reldir, name=None):
         super().__init__(reldir, name)
@@ -57,27 +48,22 @@ class EquipmentProfile(Profile):
 
     def to_dict(self):
         d = {}
-        d['Focuser'] = { 'driver' : self.focuser.driver,
-                         'minpos' : self.focuser.minpos,
-                         'maxpos' : self.focuser.maxpos }
-        d['Camera'] = { 'driver' : self.camera.driver}
-        d['Mount'] = { 'driver' : self.mount.driver}
-        d['FilterWheel'] = { 'driver' : self.filterwheel.driver}
-        d['Telescope'] = { 'focal_length' : self.focal_length,
-                           'aperture' : self.aperture }
+        print(dir(self.focuser))
+        d['Focuser'] = self.focuser._to_dict()
+        d['Camera'] = self.camera._to_dict()
+        d['Mount'] = self.mount._to_dict()
+        d['FilterWheel'] = self.filterwheel._to_dict()
+        d['Telescope'] = self.telescope._to_dict()
         return d
 
     def from_dict(self, d):
         self.focuser = self.Focuser()
-        self.focuser.driver = d['Focuser']['driver']
-        self.focuser.minpos = d['Focuser']['minpos']
-        self.focuser.maxpos = d['Focuser']['maxpos']
+        self.focuser._from_dict(d['Focuser'])
         self.camera = self.Camera()
-        self.camera.driver = d['Camera']['driver']
+        self.camera._from_dict(d['Camera'])
         self.mount = self.Mount()
-        self.mount.driver = d['Mount']['driver']
+        self.mount._from_dict(d['Mount'])
         self.filterwheel = self.FilterWheel
-        self.filterwheel.driver = d['FilterWheel']['driver']
+        self.filterwheel._from_dict(d['FilterWheel'])
         self.telescope = self.Telescope()
-        self.telescope.focal_length = d['Telescope']['focal_length']
-        self.telescpoe.aperture = d['Telescope']['aperture']
+        self.telescope._from_dict(d['Telescope'])

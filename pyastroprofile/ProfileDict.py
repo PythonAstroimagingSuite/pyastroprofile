@@ -13,6 +13,7 @@
 import os
 import glob
 import logging
+from dataclasses import dataclass
 import yaml
 #from configobj import ConfigObj
 
@@ -77,31 +78,40 @@ def get_default_profile(loc):
 #        return "%s(name=%r, age=%r)" % \
 #               (self .__class__.__name__, self.name, self.age)
 
+@dataclass
 class ProfileSection:
-    def property_keys(self):
-        logging.info(f'{list(x for x in self.__dict__ if x[0] != "_")}')
+    def _property_keys(self):
+        logging.info(f'{self.__class__.__name__}._property_keys()')
+        logging.info(f'{self.__dict__}')
         for k, v in self.__dict__.items():
             logging.info(f'   {k}   {v}')
         return sorted(x for x in self.__dict__ if x[0] != '_')
 
-    def to_dict(self):
+    def _to_dict(self):
         logging.info(f'class {self.__class__.__name__}.to_dict():')
         d = {}
-        logging.info(f' property_keys = {self.property_keys()}')
-        for k in self.property_keys():
+        logging.info(f' property_keys = {self._property_keys()}')
+        logging.info(f' dir(self) = {dir(self)}')
+        for k in self._property_keys():
             logging.info(f'   {k}  {self.__dict__[k]}')
             d[k] = self.__dict__[k]
         return d
 
-    def from_dict(self, d):
+    def _from_dict(self, d):
+        logging.info(f'ProfileSection _from_dict {d}')
         for k, v in d.items():
+            logging.info(f' copying key {k} value = {v}')
             self.__dict__[k] = v
+        logging.info(f' final __dict__ = {self.__dict__}')
 
     def __repr__(self):
-        s = f'{self.__class__.__name__}('
+        s = f'{Aself.__class__.__name__}('
         ks = self.property_keys()
         i = 0
+        print(f'\n{ks}\n')
         for k in ks:
+            if k == '_sectionname':
+                continue
             s += f'{k}={self.__dict__[k]}'
             if i != len(ks) - 1:
                 s += ', '
@@ -130,8 +140,6 @@ class Profile:
         #self._config = ConfigObj(unrepr=True, file_error=True, raise_errors=True)
         self._config_reldir = reldir
 
-
-
         # if name is none see if a default exists
         if name == None or name == 'default':
             name = self._find_default()
@@ -142,6 +150,14 @@ class Profile:
 
         logging.debug(f'self._config_filname = {self._config_filename}')
         logging.debug(f'self._config_reldir = {self._config_reldir}')
+
+        self.sections = {}
+
+    def add_section(self, sectionclass):
+        self.sections[sectionclass._sectionname] = sectionclass
+        self.__dict__[sectionclass._sectionname] = sectionclass()
+        print('add_section', self.__dict__)
+
 
 #    def _find_default(self):
 #        """ See if DEFAULT_PROFILE file exists and check it for the
@@ -199,7 +215,12 @@ class Profile:
         #logging.info(f'self._config = {self._config}')
 
         # to_dict() must be defined by child class
-        dataobj = self.to_dict()
+        dataobj = {}
+        logging.info(f'sections = {self.sections}')
+        for k, v in self.sections.items():
+            logging.info(f' added key {k} value {v()._to_dict()}')
+            dataobj[k] = v()._to_dict()
+        #dataobj = self.to_dict()
         logging.info(f'to_dict = {dataobj}')
         yaml_f = open(self._get_config_filename(), 'w')
         yaml.dump(dataobj, stream=yaml_f, default_flow_style=False)
@@ -207,11 +228,33 @@ class Profile:
 
     def read(self):
         yaml_f = open(self._get_config_filename(), 'r')
-        d = yaml.load(stream=yaml_f)
+        d = yaml.safe_load(stream=yaml_f)
         yaml_f.close()
         logging.debug(f'read profile is {d}')
 
         # from_dict() must be defined in child
-        self.from_dict(d)
+        #self.from_dict(d)
+        for k, v in d.items():
+            logging.info(f'{k} {v} = {self.sections[k]()._from_dict(v)}')
+            self.__dict__[k] = self.sections[k]()
+            self.__dict__[k]._from_dict(v)
+            print('AAAAA', self.__dict__)
 
         return True
+
+    def __repr__(self):
+        s = f'{self.__class__.__name__}('
+        ks = self.sections.keys()
+        print(self.sections)
+        print(f'\n{ks}\n')
+        i = 0
+        for k in ks:
+            if k[0] == '_':
+                continue
+            print(type(self.__dict__[k]))
+            s += f'{k}={self.__dict__[k]}'
+            if i != len(ks) - 1:
+                s += ', '
+            i += 1
+        s += ')'
+        return s

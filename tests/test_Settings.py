@@ -23,6 +23,9 @@ elif sys.argv[1] in ['read', 'defaultread']:
     rc = s.read()
     logging.info(f'rc for read is {rc}')
     logging.info('read core info')
+
+    logging.info(f'DICT = {s.__dict__}')
+
     logging.info(f's = {s}')
 elif sys.argv[1] == 'setdefault':
     set_default_profile('testprofiles', 'test-observatory.ini')
