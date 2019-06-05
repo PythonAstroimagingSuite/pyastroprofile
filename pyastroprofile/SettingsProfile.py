@@ -1,12 +1,12 @@
 #
 # store observatory profiles
 #
-from dataclasses import dataclass
+from dataclasses import dataclass, InitVar
 from pyastroprofile.ProfileDict import Profile, ProfileSection
 
 class SettingsProfile(Profile):
     """
-    This is a class to represent program settings for the various
+    This class represents the program settings for the various
     programs involved in the imaging tool chain.  Anything settings
     specific to a particular hardware profile will be stored here.
     Settings which are not specific to a hardware profile but are
@@ -14,12 +14,17 @@ class SettingsProfile(Profile):
     will be stored in a settings file specific to the particular
     program.
 
+    :param reldir: Path relative to the system configuration directory
+                   to store the yaml settings file.
+    :param name: The name of the settings file **WITHOUT** the '.yaml' extension.
+
     Currently the settings stored are:
         * platesolve
         * autofocus
 
     Access is done as follows::
 
+        from pyastroprofile.SettingsProfile import SettingsProfile
         sp = SettingsProfile(reldir='settings', name='mysettings')
         sp.read()
         print('pixelscale is ', sp.platesolve.pixelscale)
@@ -27,11 +32,10 @@ class SettingsProfile(Profile):
         sp.platesolve.pixelscale = 3.0
         sp.write()
 
-    The parameters passed when creating the object are:
+    This example will create the file '<system config dir>/settings/mysettings.yaml'
 
-    :param reldir: Path relative to the system configuration directory
-                   to store the yaml settings file.
-    :param name: The name of the settings file **WITHOUT** the '.yaml' extension.
+    **NOTE**: It is recommended to use the :class:`AstroProfile` class for
+    accessing these settings as it includes the :class:`SettingsProfile` class.
 
     """
 
@@ -54,15 +58,15 @@ class SettingsProfile(Profile):
     class AutoFocusSettings(ProfileSection):
         """This class stores settings related to autofocus
         for a particular hardware setting.
-
-        :var start_hfr: Desired HFR which focus run starts at
-        :var near_hfr: HFR used for determining final focus
-        :var focus_delay: Delay (seconds) after a focus move
-        :var focus_dir: Direction ('IN' or 'OUT') of focus run
-        :var exposure_start: Starting exposure time (seconds)
-        :var exposure_max: Maximum exposure time (seconds) allowed
-        :var exposure_min: Minimum exposure time (seconds) allowed
         """
+
+#        :var start_hfr: Desired HFR which focus run starts at
+#        :var near_hfr: HFR used for determining final focus
+#        :var focus_delay: Delay (seconds) after a focus move
+#        :var focus_dir: Direction ('IN' or 'OUT') of focus run
+#        :var exposure_start: Starting exposure time (seconds)
+#        :var exposure_max: Maximum exposure time (seconds) allowed
+#        :var exposure_min: Minimum exposure time (seconds) allowed
         start_hfr : float = 25.0
         near_hfr : float = 12.0
         focus_delay : float = 0.0

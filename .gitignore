@@ -4,3 +4,7 @@
 *.fit
 *.fits
 *.py[cod]
+_templates
+_static
+_build
+

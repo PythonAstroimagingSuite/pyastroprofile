@@ -6,6 +6,36 @@ from dataclasses import dataclass
 from pyastroprofile.ProfileDict import Profile, ProfileSection
 
 class EquipmentProfile(Profile):
+    """
+    This class represents the equipment profile.
+
+    :param reldir: Path relative to the system configuration directory
+                   to store the yaml settings file.
+    :param name: The name of the settings file **WITHOUT** the '.yaml' extension.
+
+    Currently the settings stored are:
+        * focuser
+        * filterwheel
+        * camera
+        * mount
+        * telescope
+
+    Access is done as follows::
+
+        from pyastroprofile.EquipmentProfile import EquipmentProfile
+        ep = EquipmentProfile(reldir='equipment', name='myequipment')
+        ep.read()
+        print('camera driver is ', ep.camera.driver)
+        ep.telscope.focal_length = 1000.0
+        ep.write()
+
+    This example will create the file '<system config dir>/equipment/myequipment.yaml'
+
+    **NOTE**: It is recommended to use the :class:`AstroProfile` class for
+    accessing these settings as it includes the :class:`ObservatoryProfile` class.
+
+    """
+
     # where this should go under astroprofile directory hierarchy
     _conf_rel_dir = 'equipment'
 
@@ -13,72 +43,43 @@ class EquipmentProfile(Profile):
     class Focuser(ProfileSection):
         # set some hopefully safe defaults
         _sectionname : str = 'focuser'
+        #: Focuser driver
         driver : str = 'Not Set'
+        #: Minimum allowed position for focuser
         minpos : int = 0
+        #: Maximum allowed position for focuser
         maxpos : int = 0
 
     @dataclass
     class Camera(ProfileSection):
         _sectionname : str = 'camera'
+        #: Camera driver
         driver : str = 'Not Set'
 
     @dataclass
     class Mount(ProfileSection):
         _sectionname : str = 'mount'
+        #: Mount driver
         driver : str = 'Not Set'
 
     @dataclass
     class FilterWheel(ProfileSection):
         _sectionname : str = 'filterwheel'
+        #: Filter wheel driver
         driver : str = 'Not Set'
 
     @dataclass
     class Telescope(ProfileSection):
         _sectionname : str = 'telescope'
+        #: Focal length of telescope
         focal_length : int = 0
+        #: Aperture of telescope
         aperture : int = 0
 
     def __init__(self, reldir, name=None):
         super().__init__(reldir, name)
-#        self.focuser = self.Focuser()
-#        self.camera = self.Camera()
-#        self.mount = self.Mount()
-#        self.filterwheel = self.FilterWheel()
-#        self.telescope = self.Telescope()
-
         self.add_section(self.Focuser)
         self.add_section(self.Camera)
         self.add_section(self.Mount)
         self.add_section(self.FilterWheel)
         self.add_section(self.Telescope)
-
-
-#    def __repr__(self):
-#        return f'{self .__class__.__name__}(' \
-#               f'Focuser={self.focuser}),' \
-#               f'Focuser={self.camera}),' \
-#               f'Mount={self.mount}),' \
-#               f'FilterWheel={self.filterwheel},' \
-#               f'Telescope={self.telescope})'
-#
-#    def to_dict(self):
-#        d = {}
-#        d['Focuser'] = self.focuser._to_dict()
-#        d['Camera'] = self.camera._to_dict()
-#        d['Mount'] = self.mount._to_dict()
-#        d['FilterWheel'] = self.filterwheel._to_dict()
-#        d['Telescope'] = self.telescope._to_dict()
-#        logging.debug(f'{self.__class__.__name__}.to_dict(): {d}')
-#        return d
-#
-#    def from_dict(self, d):
-#        self.focuser = self.Focuser()
-#        self.focuser._from_dict(d['Focuser'])
-#        self.camera = self.Camera()
-#        self.camera._from_dict(d['Camera'])
-#        self.mount = self.Mount()
-#        self.mount._from_dict(d['Mount'])
-#        self.filterwheel = self.FilterWheel
-#        self.filterwheel._from_dict(d['FilterWheel'])
-#        self.telescope = self.Telescope()
-#        self.telescope._from_dict(d['Telescope'])

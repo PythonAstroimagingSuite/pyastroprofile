@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>pyastroprofile.AstroProfile &#8212; pyastroprofile 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../../index.html">pyastroprofile 0.1 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for pyastroprofile.AstroProfile</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">pyastroprofile.ProfileDict</span> <span class="k">import</span> <span class="n">get_base_config_dir</span>
+<span class="kn">from</span> <span class="nn">pyastroprofile.EquipmentProfile</span> <span class="k">import</span> <span class="n">EquipmentProfile</span>
+<span class="kn">from</span> <span class="nn">pyastroprofile.ObservatoryProfile</span> <span class="k">import</span> <span class="n">ObservatoryProfile</span>
+<span class="kn">from</span> <span class="nn">pyastroprofile.SettingsProfile</span> <span class="k">import</span> <span class="n">SettingsProfile</span>
+
+<span class="c1"># FIXME this should be something globally configured!</span>
+<span class="n">ASTROPROFILE_ROOT_RELDIR</span> <span class="o">=</span> <span class="s1">&#39;astroprofiles&#39;</span>
+
+<span class="n">ASTROPROFILE_EXT</span> <span class="o">=</span> <span class="s1">&#39;.yaml&#39;</span>
+
+<div class="viewcode-block" id="get_astroprofile_base_dir"><a class="viewcode-back" href="../../pyastroprofile.html#pyastroprofile.AstroProfile.get_astroprofile_base_dir">[docs]</a><span class="k">def</span> <span class="nf">get_astroprofile_base_dir</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the base directory for astroprofile files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_base_config_dir</span><span class="p">(),</span> <span class="n">ASTROPROFILE_ROOT_RELDIR</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AstroProfile"><a class="viewcode-back" href="../../pyastroprofile.html#pyastroprofile.AstroProfile.AstroProfile">[docs]</a><span class="k">class</span> <span class="nc">AstroProfile</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class acts as a container to hold other profiles.</span>
+
+<span class="sd">    :param reldir: Path relative to the system configuration directory</span>
+<span class="sd">                   to store the yaml settings file.</span>
+<span class="sd">    :param name: The name of the settings file **WITHOUT** the &#39;.yaml&#39; extension.</span>
+
+<span class="sd">    Currently the profiles stored are:</span>
+<span class="sd">        * equipment (:class:`EquipmentProfile`)</span>
+<span class="sd">        * observatory (:class:`ObservatoryProfile`)</span>
+<span class="sd">        * settings (:class:`SettingsProfile`)</span>
+
+<span class="sd">    Access is done as follows::</span>
+
+<span class="sd">        from pyastroprofile.AstroProfile import AstroProfile</span>
+<span class="sd">        ap = AstroProfile()</span>
+<span class="sd">        ap.read(&#39;myastroprofile&#39;)</span>
+<span class="sd">        print(&#39;latitude is &#39;, ap.observatory.location.latitude)</span>
+<span class="sd">        print(&#39;camera driver is &#39;, ap.equipment.camera.driver)</span>
+<span class="sd">        print(&#39;pixelscale is &#39;, ap.settings.platesolve.pixelscale)</span>
+<span class="sd">        ap.observatory.location.altitude = 300.0</span>
+<span class="sd">        ap.equipment.focuser.driver = &#39;Focuser Simulator&#39;</span>
+<span class="sd">        ap.write()</span>
+
+<span class="sd">    The astroprofile is stored in the file in the directory</span>
+<span class="sd">    :func:`get_astroprofile_base_dir` and contains the names of</span>
+<span class="sd">    the individual profile files for the different profiles</span>
+<span class="sd">    contained by the :class:`AstroProfile`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1">#: Use to access the equipment profile.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">equipment</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Use to access the observatory profile.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">observatory</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Use to access the settings profile.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_create_section</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">section</span><span class="p">(</span><span class="n">reldir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_astroprofile_base_dir</span><span class="p">(),</span> <span class="n">section</span><span class="o">.</span><span class="n">_conf_rel_dir</span><span class="p">),</span>
+                       <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+<div class="viewcode-block" id="AstroProfile.create_reference"><a class="viewcode-back" href="../../pyastroprofile.html#pyastroprofile.AstroProfile.AstroProfile.create_reference">[docs]</a>    <span class="k">def</span> <span class="nf">create_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref_name</span><span class="p">,</span> <span class="n">equipment_profile</span><span class="p">,</span>
+                              <span class="n">observatory_profile</span><span class="p">,</span> <span class="n">settings_profile</span><span class="p">,</span>
+                              <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates an astroprofile reference file which declares the</span>
+<span class="sd">        other profiles to be contained within this astroprofile.</span>
+
+<span class="sd">        :param str ref_name: Name of the reference file.</span>
+<span class="sd">        :param str equipment_profile: Name of the equipment profile.</span>
+<span class="sd">        :param str observatory_profile: Name of the observatory profile.</span>
+<span class="sd">        :param str settings_profile: Name of the settings profile.</span>
+<span class="sd">        :param bool overwrite: Whether to overwrite existing file or not.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">get_astroprofile_base_dir</span><span class="p">()</span>
+        <span class="c1"># FIXME might be better to have extension a constant?</span>
+        <span class="n">def_fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">ref_name</span> <span class="o">+</span> <span class="n">ASTROPROFILE_EXT</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">def_fname</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Reference file </span><span class="si">{ref_name}</span><span class="s1"> already exists and overwrite=False&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;equipment&#39;</span> <span class="p">:</span> <span class="n">equipment_profile</span><span class="p">,</span>
+                <span class="s1">&#39;observatory&#39;</span> <span class="p">:</span> <span class="n">observatory_profile</span><span class="p">,</span>
+                <span class="s1">&#39;settings&#39;</span> <span class="p">:</span> <span class="n">settings_profile</span>
+             <span class="p">}</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">def_fname</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+    <span class="c1"># an astroprofile is a text file which contains the names of the</span>
+    <span class="c1"># equipment, observatory, and settings profiles</span>
+<div class="viewcode-block" id="AstroProfile.read"><a class="viewcode-back" href="../../pyastroprofile.html#pyastroprofile.AstroProfile.AstroProfile.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read an :class:`AstroProfile`.</span>
+
+<span class="sd">        :param str name: Name of astroprofile file to be loaded.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">get_astroprofile_base_dir</span><span class="p">()</span>
+        <span class="n">def_fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">name</span> <span class="o">+</span> <span class="n">ASTROPROFILE_EXT</span><span class="p">)</span>
+        <span class="n">ap</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">def_fname</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">def_fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">ap</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+            <span class="c1"># find components</span>
+            <span class="n">equip_profile</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;equipment&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">obs_profile</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;observatory&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">set_profile</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;settings&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+            <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">equip_profile</span><span class="p">,</span> <span class="n">obs_profile</span><span class="p">,</span> <span class="n">set_profile</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">equipment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_section</span><span class="p">(</span><span class="n">EquipmentProfile</span><span class="p">,</span> <span class="n">equip_profile</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">observatory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_section</span><span class="p">(</span><span class="n">ObservatoryProfile</span><span class="p">,</span> <span class="n">obs_profile</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_section</span><span class="p">(</span><span class="n">SettingsProfile</span><span class="p">,</span> <span class="n">set_profile</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">equipment</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">observatory</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;AstroProfile(equipment=</span><span class="si">{self.equipment}</span><span class="s1">, observatory=</span><span class="si">{self.observatory}</span><span class="s1">, &#39;</span> \
+               <span class="n">f</span><span class="s1">&#39;settings=</span><span class="si">{self.settings}</span><span class="s1">)&#39;</span></div>
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../../py-modindex.html" title="Python Module Index"
+              >modules</a> |
+            <a href="../../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Michael Fulbright.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

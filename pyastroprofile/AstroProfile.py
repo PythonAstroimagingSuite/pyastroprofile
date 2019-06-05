@@ -13,12 +13,47 @@ ASTROPROFILE_ROOT_RELDIR = 'astroprofiles'
 ASTROPROFILE_EXT = '.yaml'
 
 def get_astroprofile_base_dir():
+    """
+    Returns the base directory for astroprofile files.
+    """
     return os.path.join(get_base_config_dir(), ASTROPROFILE_ROOT_RELDIR)
 
 class AstroProfile:
+    """
+    This class acts as a container to hold other profiles.
+
+    :param reldir: Path relative to the system configuration directory
+                   to store the yaml settings file.
+    :param name: The name of the settings file **WITHOUT** the '.yaml' extension.
+
+    Currently the profiles stored are:
+        * equipment (:class:`EquipmentProfile`)
+        * observatory (:class:`ObservatoryProfile`)
+        * settings (:class:`SettingsProfile`)
+
+    Access is done as follows::
+
+        from pyastroprofile.AstroProfile import AstroProfile
+        ap = AstroProfile()
+        ap.read('myastroprofile')
+        print('latitude is ', ap.observatory.location.latitude)
+        print('camera driver is ', ap.equipment.camera.driver)
+        print('pixelscale is ', ap.settings.platesolve.pixelscale)
+        ap.observatory.location.altitude = 300.0
+        ap.equipment.focuser.driver = 'Focuser Simulator'
+        ap.write()
+
+    The astroprofile is stored in the file in the directory
+    :func:`get_astroprofile_base_dir` and contains the names of
+    the individual profile files for the different profiles
+    contained by the :class:`AstroProfile`.
+    """
     def __init__(self):
+        #: Use to access the equipment profile.
         self.equipment = None
+        #: Use to access the observatory profile.
         self.observatory = None
+        #: Use to access the settings profile.
         self.settings = None
 
     def _create_section(self, section, name):
@@ -28,6 +63,16 @@ class AstroProfile:
     def create_reference(self, ref_name, equipment_profile,
                               observatory_profile, settings_profile,
                               overwrite=False):
+        """
+        Creates an astroprofile reference file which declares the
+        other profiles to be contained within this astroprofile.
+
+        :param str ref_name: Name of the reference file.
+        :param str equipment_profile: Name of the equipment profile.
+        :param str observatory_profile: Name of the observatory profile.
+        :param str settings_profile: Name of the settings profile.
+        :param bool overwrite: Whether to overwrite existing file or not.
+        """
         path = get_astroprofile_base_dir()
         # FIXME might be better to have extension a constant?
         def_fname = os.path.join(path, ref_name + ASTROPROFILE_EXT)
@@ -48,6 +93,11 @@ class AstroProfile:
     # an astroprofile is a text file which contains the names of the
     # equipment, observatory, and settings profiles
     def read(self, name):
+        """
+        Read an :class:`AstroProfile`.
+
+        :param str name: Name of astroprofile file to be loaded.
+        """
         path = get_astroprofile_base_dir()
         def_fname = os.path.join(path, name + ASTROPROFILE_EXT)
         ap = None
