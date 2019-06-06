@@ -6,20 +6,20 @@ from pyastroprofile.ObservatoryProfile import ObservatoryProfile
 
 if sys.argv[1] in ['write', 'defaultwrite']:
     if sys.argv[1] == 'write':
-        fname = 'test-observatory.ini'
+        fname = 'test-observatory.yaml'
     else:
         fname = None
 
     obs = ObservatoryProfile('testprofiles', fname)
 
-    obs.latitude = 35.8
-    obs.longitude = -78.8
-    obs.altitude = 100.0
-    obs.timezone = "US/Eastern"
+    obs.location.latitude = 35.8
+    obs.location.longitude = -78.8
+    obs.location.altitude = 100.0
+    obs.location.timezone = "US/Eastern"
     obs.write()
 elif sys.argv[1] in ['read', 'defaultread']:
     if sys.argv[1] == 'read':
-        fname = 'test-observatory.ini'
+        fname = 'test-observatory'
     else:
         fname = None
 

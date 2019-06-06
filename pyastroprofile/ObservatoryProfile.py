@@ -62,7 +62,7 @@ class ObservatoryProfile(Profile):
              self.location.longitude,
              self.location.altitude,
              self.location.timezone]
-        return not (l.count(None) == 0)
+        return (l.count(None) == 0)
 
     def __getattr__(self, attr):
         #logging.info(f'{self.__dict__}')

@@ -75,21 +75,22 @@ elif sys.argv[1] in ['read', 'defaultread']:
     else:
         fname = None
 
-    eq = EquipmentProfile(RELDIR, fname)
+    ap = AstroProfile()
+    rc = ap.read('testing')
 
-    rc = eq.read()
     logging.info(f'rc for read is {rc}')
-
-    logging.info('read core info')
-    logging.info(f'eq.camera.driver = {eq.camera.driver}')
-    logging.info(f'eq.mount.driver = {eq.mount.driver}')
-    logging.info(f'eq.focuser.driver = {eq.focuser.driver}')
-    logging.info(f'eq.filterwheel.driver = {eq.filterwheel.driver}')
-
-    logging.info(f'eq.camera = {eq.camera}')
-    logging.info(f'eq.mount = {eq.mount}')
-    logging.info(f'eq.focuser = {eq.focuser}')
-    logging.info(f'eq.filterwheel = {eq.filterwheel}')
+    logging.info(f'ap = {ap}')
+    logging.info(f'ap.observatory.observer = {ap.observatory.observer}')
+#    logging.info('read core info')
+#    logging.info(f'eq.camera.driver = {eq.camera.driver}')
+#    logging.info(f'eq.mount.driver = {eq.mount.driver}')
+#    logging.info(f'eq.focuser.driver = {eq.focuser.driver}')
+#    logging.info(f'eq.filterwheel.driver = {eq.filterwheel.driver}')
+#
+#    logging.info(f'eq.camera = {eq.camera}')
+#    logging.info(f'eq.mount = {eq.mount}')
+#    logging.info(f'eq.focuser = {eq.focuser}')
+#    logging.info(f'eq.filterwheel = {eq.filterwheel}')
 elif sys.argv[1] == 'setdefault':
     set_default_profile(RELDIR, FNAME)
 elif sys.argv[1] == 'getdefault':
