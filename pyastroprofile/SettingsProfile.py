@@ -55,6 +55,26 @@ class SettingsProfile(Profile):
         _sectionname : str = 'platesolve'
 
     @dataclass
+    class GuiderSettings(ProfileSection):
+        """This class stores settings related to guiding
+        for a particular hardware setting.
+
+        :var pixelscale: pixel scale in arcseconds/pixel
+        """
+        dither_settle_pixels : float = 0.5
+        dither_settle_time : float = 10.0
+        dither_settle_timeout : float = 60.0
+        dither_operation_timeout : float = 90.0
+
+        guide_settle_pixels : float = 0.5
+        guide_settle_time : float = 10.0
+        guide_settle_timeout : float = 60.0
+        guide_operation_timeout : float = 90.0
+
+        # name of section in YAML output and attribute name
+        _sectionname : str = 'guider'
+
+    @dataclass
     class AutoFocusSettings(ProfileSection):
         """This class stores settings related to autofocus
         for a particular hardware setting.
@@ -84,3 +104,4 @@ class SettingsProfile(Profile):
         # create sections for settings
         self.add_section(self.PlateSolveSettings)
         self.add_section(self.AutoFocusSettings)
+        self.add_section(self.GuiderSettings)
