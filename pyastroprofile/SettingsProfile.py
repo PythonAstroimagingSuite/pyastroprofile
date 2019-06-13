@@ -61,6 +61,7 @@ class SettingsProfile(Profile):
 
         :var pixelscale: pixel scale in arcseconds/pixel
         """
+        dither_size_pixels : float = 3.0
         dither_settle_pixels : float = 0.5
         dither_settle_time : float = 10.0
         dither_settle_timeout : float = 60.0

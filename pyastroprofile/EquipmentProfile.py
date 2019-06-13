@@ -75,6 +75,8 @@ class EquipmentProfile(Profile):
         focal_length : int = 0
         #: Aperture of telescope
         aperture : int = 0
+        #: Obstruction of telescope
+        obstruction : int = 0
 
     def __init__(self, reldir, name=None):
         super().__init__(reldir, name)
