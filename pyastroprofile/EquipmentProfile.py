@@ -1,6 +1,7 @@
 #
 # store equipment profiles
 #
+from typing import List
 from dataclasses import dataclass
 
 from pyastroprofile.ProfileDict import Profile, ProfileSection
@@ -67,6 +68,11 @@ class EquipmentProfile(Profile):
         _sectionname : str = 'filterwheel'
         #: Filter wheel driver
         driver : str = 'Not Set'
+        names = []
+
+        @property
+        def num_filters(self):
+            return len(self.names)
 
     @dataclass
     class Telescope(ProfileSection):

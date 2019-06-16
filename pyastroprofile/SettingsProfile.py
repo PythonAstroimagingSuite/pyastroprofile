@@ -48,8 +48,10 @@ class SettingsProfile(Profile):
         for a particular hardware setting.
 
         :var pixelscale: pixel scale in arcseconds/pixel
+        :var prefer_filter: preferred filter for solving
         """
         pixelscale : float = 5.7
+        prefer_filter : str = None
 
         # name of section in YAML output and attribute name
         _sectionname : str = 'platesolve'

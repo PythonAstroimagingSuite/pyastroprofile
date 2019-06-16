@@ -5,7 +5,7 @@ from pyastroprofile.Profile import find_profiles, set_default_profile, get_defau
 from pyastroprofile.EquipmentProfile import EquipmentProfile
 
 RELDIR = 'testprofiles/equipment'
-FNAME = 'test-equipment.ini'
+FNAME = 'test-equipment.yaml'
 
 if sys.argv[1] in ['write', 'defaultwrite']:
     if sys.argv[1] == 'write':
@@ -19,6 +19,7 @@ if sys.argv[1] in ['write', 'defaultwrite']:
     eq.mount.driver = 'Telescope Simulator'
     eq.focuser.driver = 'Focuser Simulator'
     eq.filterwheel.driver = 'FilterWheel Simulator'
+    eq.filterwheel.names = ['L', 'R', 'G', 'B', 'Ha', 'OIII', 'SII', 'Dark']
     eq.write()
 elif sys.argv[1] in ['read', 'defaultread']:
     if sys.argv[1] == 'read':
@@ -41,6 +42,7 @@ elif sys.argv[1] in ['read', 'defaultread']:
     logging.info(f'eq.mount = {eq.mount}')
     logging.info(f'eq.focuser = {eq.focuser}')
     logging.info(f'eq.filterwheel = {eq.filterwheel}')
+    logging.info(f'n filters      = {eq.filterwheel.num_filters}')
 elif sys.argv[1] == 'setdefault':
     set_default_profile(RELDIR, FNAME)
 elif sys.argv[1] == 'getdefault':

@@ -247,6 +247,7 @@ class Profile:
 
         # from_dict() must be defined in child
         #self.from_dict(d)
+        print(d, type(d))
         for k, v in d.items():
             #logging.info(f'{k} {v} = {self.sections[k]()._from_dict(v)}')
             self.__dict__[k] = self.sections[k]()
