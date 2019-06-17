@@ -34,7 +34,7 @@ def get_base_config_dir():
 def find_profiles(loc):
     """ Assumes profiles end with .ini """
     config_glob = os.path.join(get_base_config_dir(), loc, '*.ini')
-    print(config_glob)
+    #print(config_glob)
     ini_files = sorted(glob.glob(config_glob))
     return ini_files
 
@@ -119,7 +119,7 @@ class ProfileSection(object):
         s = f'{self.__class__.__name__}('
         ks = self.property_keys()
         i = 0
-        print(f'\n{ks}\n')
+        #print(f'\n{ks}\n')
         for k in ks:
             if k == '_sectionname':
                 continue
@@ -247,7 +247,6 @@ class Profile:
 
         # from_dict() must be defined in child
         #self.from_dict(d)
-        print(d, type(d))
         for k, v in d.items():
             #logging.info(f'{k} {v} = {self.sections[k]()._from_dict(v)}')
             self.__dict__[k] = self.sections[k]()
@@ -257,13 +256,13 @@ class Profile:
     def __repr__(self):
         s = f'{self.__class__.__name__}('
         ks = self.sections.keys()
-        print(self.sections)
-        print(f'\n{ks}\n')
+        #print(self.sections)
+        #print(f'\n{ks}\n')
         i = 0
         for k in ks:
             if k[0] == '_':
                 continue
-            print(type(self.__dict__[k]))
+            #print(type(self.__dict__[k]))
             s += f'{k}={self.__dict__[k]}'
             if i != len(ks) - 1:
                 s += ', '
