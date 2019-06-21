@@ -62,6 +62,8 @@ class EquipmentProfile(Profile):
         _sectionname : str = 'mount'
         #: Mount driver
         driver : str = 'Not Set'
+        #: pier side reporting hint
+        pierside_reporting : str = 'Not set'
 
     @dataclass
     class FilterWheel(ProfileSection):

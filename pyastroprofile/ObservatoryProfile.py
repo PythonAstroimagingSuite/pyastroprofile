@@ -1,10 +1,14 @@
 #
 # store observatory profiles
 #
+import logging
 from dataclasses import dataclass
 import astropy.units as u
-from pyastroprofile.ProfileDict import Profile, ProfileSection
 from astroplan import Observer
+
+from pyastroprofile.ProfileDict import Profile, ProfileSection
+
+from runastroseq.Horizon import Horizon
 
 class ObservatoryProfile(Profile):
     """
@@ -50,11 +54,28 @@ class ObservatoryProfile(Profile):
         altitude : float = None
         #: Timezone string
         timezone : str = None
+        #: Horizon definition
+        horizon_file : str = None
 
     def __init__(self, reldir, name=None):
         super().__init__(reldir, name)
 
         self.add_section(self.Location)
+
+        # load horizon file and store so it is not saved in dict
+        self._horizon = Horizon()
+
+    def read(self):
+        # load in profile
+        super().read()
+
+        # now try to load horizon file
+        if self.location.horizon_file is not None:
+            logging.debug('ObservatoryProfile: loading horizon file {self.location.horizon_file}')
+            rc = self._horizon.readfile(self.location.horizon_file)
+            if not rc:
+                logging.error('ObservatoryProfile: Unable to load horizon!')
+            return rc
 
     def _data_complete(self):
         l = [self.location.obsname,
@@ -77,6 +98,8 @@ class ObservatoryProfile(Profile):
                                 name=self.location.obsname)
             else:
                 return None
+        elif attr == 'horizon':
+            return self._horizon
         else:
             return super().__getattribute__(attr)
 
