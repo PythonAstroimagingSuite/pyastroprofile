@@ -97,9 +97,14 @@ class SettingsProfile(Profile):
         exposure_start : float = 1.0
         exposure_max : float = 8.0
         exposure_min : float = 0.5
+        star_mag_for_filter = {}
 
         # name of section in YAML output and attribute name
         _sectionname : str = 'autofocus'
+
+        def preferred_star_mag(self, filter_name):
+            mag = self.star_mag_for_filter.get(filter_name, None)
+            return mag
 
     def __init__(self, reldir, name=None):
         super().__init__(reldir, name)
