@@ -8,7 +8,7 @@ from astroplan import Observer
 
 from pyastroprofile.ProfileDict import Profile, ProfileSection
 
-from runastroseq.Horizon import Horizon
+from pyastroprofile.Horizon import Horizon
 
 class ObservatoryProfile(Profile):
     """
