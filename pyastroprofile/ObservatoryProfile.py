@@ -71,7 +71,7 @@ class ObservatoryProfile(Profile):
 
         # now try to load horizon file
         if self.location.horizon_file is not None:
-            logging.debug('ObservatoryProfile: loading horizon file {self.location.horizon_file}')
+            logging.debug(f'ObservatoryProfile: loading horizon file {self.location.horizon_file}')
             rc = self._horizon.readfile(self.location.horizon_file)
             if not rc:
                 logging.error('ObservatoryProfile: Unable to load horizon!')

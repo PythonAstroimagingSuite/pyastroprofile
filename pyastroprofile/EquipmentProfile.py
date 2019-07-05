@@ -70,7 +70,7 @@ class EquipmentProfile(Profile):
         _sectionname : str = 'filterwheel'
         #: Filter wheel driver
         driver : str = 'Not Set'
-        names = []
+        names : list = []
 
         @property
         def num_filters(self):
