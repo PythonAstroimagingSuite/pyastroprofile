@@ -2,7 +2,7 @@
 # store equipment profiles
 #
 from typing import List
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from pyastroprofile.ProfileDict import Profile, ProfileSection
 
@@ -70,7 +70,7 @@ class EquipmentProfile(Profile):
         _sectionname : str = 'filterwheel'
         #: Filter wheel driver
         driver : str = 'Not Set'
-        names : list = []
+        names : list = field(default_factory=list)
 
         @property
         def num_filters(self):

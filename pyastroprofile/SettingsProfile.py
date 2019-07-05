@@ -1,7 +1,7 @@
 #
 # store observatory profiles
 #
-from dataclasses import dataclass, InitVar
+from dataclasses import dataclass, field
 from pyastroprofile.ProfileDict import Profile, ProfileSection
 
 class SettingsProfile(Profile):
@@ -97,7 +97,7 @@ class SettingsProfile(Profile):
         exposure_start : float = 1.0
         exposure_max : float = 8.0
         exposure_min : float = 0.5
-        star_mag_for_filter : dict = {}
+        star_mag_for_filter : dict = field(default_factory=dict)
 
         # name of section in YAML output and attribute name
         _sectionname : str = 'autofocus'
