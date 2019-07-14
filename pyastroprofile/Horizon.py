@@ -32,7 +32,7 @@ class Horizon:
         for az in range(0, 360):
             # round up to make sure we dont give false positives
             # that an object has cleared horizon
-            h_alt = max(90, self.get_alt(az)+1)
+            h_alt = min(90, self.get_alt(az)+1)
             alt_arr[az, 0:int(h_alt)] = True
 
         return alt_arr
