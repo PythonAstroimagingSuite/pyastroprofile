@@ -1,6 +1,7 @@
 #
 # store observatory profiles
 #
+import os
 import logging
 from dataclasses import dataclass
 import astropy.units as u
@@ -71,8 +72,18 @@ class ObservatoryProfile(Profile):
 
         # now try to load horizon file
         if self.location.horizon_file is not None:
-            logging.debug(f'ObservatoryProfile: loading horizon file {self.location.horizon_file}')
-            rc = self._horizon.readfile(self.location.horizon_file)
+            logging.debug(f'ObservatoryProfile: horizon file = {self.location.horizon_file}')
+
+            # if horizon file specification does not have a leading
+            # directory specification assume it is in the 'astroprofiles/observatories'
+            # directory
+            if os.path.dirname(self.location.horizon_file) == '':
+                hzn_dir =  self._get_config_dir()
+            else:
+                hzn_dir = ''
+            hzn_file = os.path.join(hzn_dir, self.location.horizon_file)
+            logging.debug(f'loading horizon file {hzn_file}')
+            rc = self._horizon.readfile(hzn_file)
             if not rc:
                 logging.error('ObservatoryProfile: Unable to load horizon!')
             return rc
