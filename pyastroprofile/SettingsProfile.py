@@ -98,6 +98,7 @@ class SettingsProfile(Profile):
         exposure_max : float = 8.0
         exposure_min : float = 0.5
         star_mag_for_filter : dict = field(default_factory=dict)
+        focus_exposure_for_filter : dict = field(default_factory=dict)
 
         # name of section in YAML output and attribute name
         _sectionname : str = 'autofocus'
@@ -106,6 +107,22 @@ class SettingsProfile(Profile):
             mag = self.star_mag_for_filter.get(filter_name, None)
             return mag
 
+        def preferred_focus_exposure(self, filter_name):
+            mag = self.focus_exposure_for_filter.get(filter_name, None)
+            return mag
+
+    @dataclass
+    class SequenceSettings(ProfileSection):
+        """This class stores settings related to capturing
+        sequences.
+
+        :var base_target_dir: Directory which sequences are stored under.
+        """
+        base_target_dir : str = None
+
+        # name of section in YAML output and attribute name
+        _sectionname : str = 'sequence'
+
     def __init__(self, reldir, name=None):
         super().__init__(reldir, name)
 
@@ -113,3 +130,4 @@ class SettingsProfile(Profile):
         self.add_section(self.PlateSolveSettings)
         self.add_section(self.AutoFocusSettings)
         self.add_section(self.GuiderSettings)
+        self.add_section(self.SequenceSettings)
