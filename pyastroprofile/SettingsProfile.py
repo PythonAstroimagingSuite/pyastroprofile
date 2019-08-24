@@ -49,9 +49,11 @@ class SettingsProfile(Profile):
 
         :var pixelscale: pixel scale in arcseconds/pixel
         :var prefer_filter: preferred filter for solving
+        :var binning: preferred binning for image used to plate solve
         """
         pixelscale : float = 5.7
         prefer_filter : str = None
+        binning : int = 2
 
         # name of section in YAML output and attribute name
         _sectionname : str = 'platesolve'

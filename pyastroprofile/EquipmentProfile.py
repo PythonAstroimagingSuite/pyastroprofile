@@ -15,6 +15,7 @@ class EquipmentProfile(Profile):
     :param name: The name of the settings file **WITHOUT** the '.yaml' extension.
 
     Currently the settings stored are:
+        * backend
         * focuser
         * filterwheel
         * camera
@@ -39,6 +40,12 @@ class EquipmentProfile(Profile):
 
     # where this should go under astroprofile directory hierarchy
     _conf_rel_dir = 'equipment'
+
+    @dataclass
+    class Backend(ProfileSection):
+        _sectionname : str = 'backend'
+        #: Camera driver
+        name : str = 'Not Set'
 
     @dataclass
     class Focuser(ProfileSection):
@@ -88,6 +95,7 @@ class EquipmentProfile(Profile):
 
     def __init__(self, reldir, name=None):
         super().__init__(reldir, name)
+        self.add_section(self.Backend)
         self.add_section(self.Focuser)
         self.add_section(self.Camera)
         self.add_section(self.Mount)
