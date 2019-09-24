@@ -85,20 +85,22 @@ class SettingsProfile(Profile):
         for a particular hardware setting.
         """
 
-#        :var start_hfr: Desired HFR which focus run starts at
-#        :var near_hfr: HFR used for determining final focus
+#        :var start_hfd: Desired HFR which focus run starts at
+#        :var near_hfd: HFR used for determining final focus
+#        :var max_hfd: Maximum allowed hfd for final focus
 #        :var focus_delay: Delay (seconds) after a focus move
 #        :var focus_dir: Direction ('IN' or 'OUT') of focus run
 #        :var exposure_start: Starting exposure time (seconds)
 #        :var exposure_max: Maximum exposure time (seconds) allowed
 #        :var exposure_min: Minimum exposure time (seconds) allowed
-        start_hfr : float = 25.0
-        near_hfr : float = 12.0
+        start_hfd : float = 25.0
+        near_hfd : float = 12.0
         focus_delay : float = 0.0
         focus_dir : str = 'IN'
         exposure_start : float = 1.0
         exposure_max : float = 8.0
         exposure_min : float = 0.5
+        maximum_hfd : float = 100
         star_mag_for_filter : dict = field(default_factory=dict)
         focus_exposure_for_filter : dict = field(default_factory=dict)
 
