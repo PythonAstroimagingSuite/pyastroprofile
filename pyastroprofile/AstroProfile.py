@@ -100,6 +100,7 @@ class AstroProfile:
         """
         path = get_astroprofile_base_dir()
         def_fname = os.path.join(path, name + ASTROPROFILE_EXT)
+        logging.info(f'Loading astroprofile file {def_fname}')
         ap = None
         if os.path.isfile(def_fname):
             with open(def_fname, 'r') as f:
