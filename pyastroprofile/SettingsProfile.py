@@ -93,6 +93,7 @@ class SettingsProfile(Profile):
 #        :var exposure_start: Starting exposure time (seconds)
 #        :var exposure_max: Maximum exposure time (seconds) allowed
 #        :var exposure_min: Minimum exposure time (seconds) allowed
+#        :var final_offset: Value to be added to final focus position
         start_hfd : float = 25.0
         near_hfd : float = 12.0
         focus_delay : float = 0.0
@@ -101,6 +102,7 @@ class SettingsProfile(Profile):
         exposure_max : float = 8.0
         exposure_min : float = 0.5
         maximum_hfd : float = 100
+        final_offset : int = 0
         star_mag_for_filter : dict = field(default_factory=dict)
         focus_exposure_for_filter : dict = field(default_factory=dict)
 
