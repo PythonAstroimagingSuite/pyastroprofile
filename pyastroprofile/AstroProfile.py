@@ -1,4 +1,5 @@
 import os
+import glob
 import yaml
 import logging
 
@@ -17,6 +18,15 @@ def get_astroprofile_base_dir():
     Returns the base directory for astroprofile files.
     """
     return os.path.join(get_base_config_dir(), ASTROPROFILE_ROOT_RELDIR)
+
+def get_available_profiles():
+    prof = glob.glob(os.path.join(get_astroprofile_base_dir(), '*.yaml'))
+    rc = []
+    for p in prof:
+        b = os.path.basename(p)
+        s, e = os.path.splitext(b)
+        rc.append(s)
+    return rc
 
 class AstroProfile:
     """
