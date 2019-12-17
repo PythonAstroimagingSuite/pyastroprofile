@@ -51,6 +51,8 @@ class EquipmentProfile(Profile):
     class Focuser(ProfileSection):
         # set some hopefully safe defaults
         _sectionname : str = 'focuser'
+        # Backend (overrides backend specified in Backend section)
+        backend : str = 'Not Set'
         #: Focuser driver
         driver : str = 'Not Set'
         #: Minimum allowed position for focuser
@@ -61,12 +63,16 @@ class EquipmentProfile(Profile):
     @dataclass
     class Camera(ProfileSection):
         _sectionname : str = 'camera'
+        # Backend (overrides backend specified in Backend section)
+        backend : str = 'Not Set'
         #: Camera driver
         driver : str = 'Not Set'
 
     @dataclass
     class Mount(ProfileSection):
         _sectionname : str = 'mount'
+        # Backend (overrides backend specified in Backend section)
+        backend : str = 'Not Set'
         #: Mount driver
         driver : str = 'Not Set'
         #: pier side reporting hint
@@ -75,6 +81,8 @@ class EquipmentProfile(Profile):
     @dataclass
     class FilterWheel(ProfileSection):
         _sectionname : str = 'filterwheel'
+        # Backend (overrides backend specified in Backend section)
+        backend : str = 'Not Set'
         #: Filter wheel driver
         driver : str = 'Not Set'
         names : list = field(default_factory=list)
