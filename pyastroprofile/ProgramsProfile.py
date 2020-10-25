@@ -1,7 +1,23 @@
 #
 # store observatory profiles
 #
-
+# Copyright 2020 Michael Fulbright
+#
+#
+#    pyastroprofile is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
 import astropy.units as u
 from pyastroprofile.ProfileDict import Profile
 
@@ -20,7 +36,7 @@ class ObservatoryProfile(Profile):
         self.timezone = None
 
     def to_dict(self):
-        d ={}
+        d = {}
         d['obsname'] = self.obsname
         d['latitude'] = self.latitude
         d['longitude'] = self.longitude
@@ -36,9 +52,9 @@ class ObservatoryProfile(Profile):
         self.timezone = d['timezone']
 
     def _data_complete(self):
-        l = [self.obsname, self.latitude, self.longitude, self.altitude,
-             self.timezone]
-        return not (l.count(None) == 0)
+        lst = [self.obsname, self.latitude, self.longitude, self.altitude,
+               self.timezone]
+        return not (lst.count(None) == 0)
 
     def __getattr__(self, attr):
         #logging.info(f'{self.__dict__}')
@@ -46,9 +62,9 @@ class ObservatoryProfile(Profile):
         # we construct on the fly from 'real' config items
         if attr == 'observer':
             if self._data_complete():
-                return Observer(longitude=self.longitude*u.deg,
-                                latitude=self.latitude*u.deg,
-                                elevation=self.altitude*u.m,
+                return Observer(longitude=self.longitude * u.deg,
+                                latitude=self.latitude * u.deg,
+                                elevation=self.altitude * u.m,
                                 timezone=self.timezone,
                                 name=self.obsname)
             else:

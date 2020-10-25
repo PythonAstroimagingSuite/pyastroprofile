@@ -1,21 +1,28 @@
 #
-# handles a profile
+# Profile handling based on dict
 #
-# a profile is a config file describing settings for a given application
-#
-# the profile can be specified by a name 'C8Mach1' or if a profile
-# name is not supplied a default will be loaded
-#
-# the default must be specified - there is no default profile by default
+# Copyright 2020 Michael Fulbright
 #
 #
-
+#    pyastroprofile is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
 import os
 import glob
 import logging
 from dataclasses import dataclass
 import yaml
-#from configobj import ConfigObj
 
 class NoDefaultProfile(Exception):
     """ raised if no default profile exists """
@@ -54,8 +61,8 @@ def get_default_profile(loc):
     if os.path.isfile(def_file):
         with open(def_file, 'r') as f:
             try:
-                l = f.readline().strip()
-                key, val = l.split('=')
+                line = f.readline().strip()
+                key, val = line.split('=')
                 if key == 'default':
                     def_name = val
             except Exception:
@@ -70,25 +77,14 @@ def get_default_profile(loc):
         def_name = None
     logging.debug(f'Using default profile = {def_name}')
     return def_name
-#class Person (yaml.YAMLObject):
-#
-#    yaml_tag = '!person'
-#
-#    def __init__(self, name, age):
-#        self.name = name
-#        self.age = age
-#
-#    def __repr__(self):
-#        return "%s(name=%r, age=%r)" % \
-#               (self .__class__.__name__, self.name, self.age)
 
 @dataclass
 class ProfileSection(object):
     def _property_keys(self):
-#        logging.info(f'{self.__class__.__name__}._property_keys()')
-#        logging.info(f'{self.__dict__}')
-#        for k, v in self.__dict__.items():
-#            logging.info(f'   {k}   {v}')
+        #logging.info(f'{self.__class__.__name__}._property_keys()')
+        #logging.info(f'{self.__dict__}')
+        #for k, v in self.__dict__.items():
+        #    logging.info(f'   {k}   {v}')
         return sorted(x for x in self.__dict__ if x[0] != '_')
 
     def _to_dict(self):
@@ -131,8 +127,8 @@ class ProfileSection(object):
         return s
 
 class Profile:
-
     """Stores program settings which can be saved persistently"""
+
     def __init__(self, reldir, name=None):
         """Set some defaults for program settings
 
@@ -153,7 +149,7 @@ class Profile:
         self._config_reldir = reldir
 
         # if name is none see if a default exists
-        if name == None or name == 'default':
+        if name is None or name == 'default':
             name = self._find_default()
             if name is None:
                 raise NoDefaultProfile
@@ -183,6 +179,7 @@ class Profile:
 #
 #        logging.debug(f'Using default profile = {def_name}')
 #        return def_name
+
     def _find_default(self):
         # get_default_profile() accepts a relative path from base config dir
         return get_default_profile(self._config_reldir)
@@ -200,7 +197,8 @@ class Profile:
             base_config_dir = get_base_config_dir()
             config_dir = os.path.join(base_config_dir, self._config_reldir)
         else:
-            logging.error('ProgramSettings: Unable to determine OS for config_dir loc!')
+            logging.error('ProgramSettings: Unable to determine OS '
+                          'for config_dir loc!')
             config_dir = None
         return config_dir
 
@@ -216,11 +214,13 @@ class Profile:
         # check if config directory exists
         if not os.path.isdir(self._get_config_dir()):
             if os.path.exists(self._get_config_dir()):
-                logging.error(f'write settings: config dir {self._get_config_dir()}' + \
+                logging.error('write settings: config dir'
+                              f' {self._get_config_dir()}'
                               f' already exists and is not a directory!')
                 return False
             else:
-                logging.info(f'write settings: creating config dir {self._get_config_dir()}')
+                logging.info('write settings: creating config dir '
+                             f'{self._get_config_dir()}')
                 os.makedirs(self._get_config_dir())
 
         logging.info(f'write() config filename: {self._get_config_filename()}')
@@ -228,15 +228,19 @@ class Profile:
 
         # to_dict() must be defined by child class
         dataobj = {}
+
         #logging.info(f'sections = {self.sections}')
         for k, v in self.sections.items():
             #logging.info(f' added key {k} value {v()._to_dict()}')
             dataobj[k] = self.__dict__[k]._to_dict()
+
         #dataobj = self.to_dict()
         #logging.info(f'to_dict = {dataobj}')
+
         yaml_f = open(self._get_config_filename(), 'w')
         yaml.dump(dataobj, stream=yaml_f, default_flow_style=False)
         yaml_f.close()
+
         return True
 
     def read(self):
@@ -251,6 +255,7 @@ class Profile:
             #logging.info(f'{k} {v} = {self.sections[k]()._from_dict(v)}')
             self.__dict__[k] = self.sections[k]()
             self.__dict__[k]._from_dict(v)
+
         return True
 
     def __repr__(self):

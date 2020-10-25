@@ -1,3 +1,22 @@
+#
+# Core Astroprofile class definition
+#
+# Copyright 2020 Michael Fulbright
+#
+#
+#    pyastroprofile is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
 import os
 import glob
 import yaml
@@ -58,6 +77,7 @@ class AstroProfile:
     the individual profile files for the different profiles
     contained by the :class:`AstroProfile`.
     """
+
     def __init__(self):
         #: Use to access the equipment profile.
         self.equipment = None
@@ -67,12 +87,12 @@ class AstroProfile:
         self.settings = None
 
     def _create_section(self, section, name):
-        return section(reldir=os.path.join(get_astroprofile_base_dir(), section._conf_rel_dir),
-                       name=name)
+        relpath = os.path.join(get_astroprofile_base_dir(), section._conf_rel_dir)
+        return section(reldir=relpath, name=name)
 
     def create_reference(self, ref_name, equipment_profile,
-                              observatory_profile, settings_profile,
-                              overwrite=False):
+                         observatory_profile, settings_profile,
+                         overwrite=False):
         """
         Creates an astroprofile reference file which declares the
         other profiles to be contained within this astroprofile.
@@ -84,16 +104,17 @@ class AstroProfile:
         :param bool overwrite: Whether to overwrite existing file or not.
         """
         path = get_astroprofile_base_dir()
+
         # FIXME might be better to have extension a constant?
         def_fname = os.path.join(path, ref_name + ASTROPROFILE_EXT)
         if os.path.isfile(def_fname) and not overwrite:
-            logging.error(f'Reference file {ref_name} already exists and overwrite=False')
+            logging.error(f'Reference file {ref_name} already exists and '
+                          'overwrite=False')
             return False
-        d = {
-                'equipment' : equipment_profile,
-                'observatory' : observatory_profile,
-                'settings' : settings_profile
-             }
+
+        d = dict([('equipment', equipment_profile),
+                  ('observatory', observatory_profile),
+                  ('settings', settings_profile)])
 
         with open(def_fname, 'w') as f:
             yaml.dump(d, stream=f)
@@ -123,8 +144,8 @@ class AstroProfile:
             obs_profile = ap.get('observatory', None)
             set_profile = ap.get('settings', None)
 
-            l = [equip_profile, obs_profile, set_profile]
-            if not (l.count(None) == 0):
+            lst = [equip_profile, obs_profile, set_profile]
+            if any(x is None for x in lst):
                 return False
 
             self.equipment = self._create_section(EquipmentProfile, equip_profile)
@@ -139,6 +160,6 @@ class AstroProfile:
         return False
 
     def __repr__(self):
-        return f'AstroProfile(equipment={self.equipment}, observatory={self.observatory}, ' \
-               f'settings={self.settings})'
-
+        return f'AstroProfile(equipment={self.equipment}, ' \
+               + f'observatory={self.observatory}, ' \
+               + f'settings={self.settings})'

@@ -1,5 +1,22 @@
 #
-# store observatory profiles
+# store settings profiles
+#
+# Copyright 2020 Michael Fulbright
+#
+#
+#    pyastroprofile is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
 #
 from dataclasses import dataclass, field
 from pyastroprofile.ProfileDict import Profile, ProfileSection
@@ -52,13 +69,13 @@ class SettingsProfile(Profile):
         :var binning: preferred binning for image used to plate solve
         :var solver: name of solver to use
         """
-        pixelscale : float = 5.7
-        prefer_filter : str = None
-        binning : int = 2
-        solver : str = None
+        pixelscale: float = 5.7
+        prefer_filter: str = None
+        binning: int = 2
+        solver: str = None
 
         # name of section in YAML output and attribute name
-        _sectionname : str = 'platesolve'
+        _sectionname: str = 'platesolve'
 
     @dataclass
     class GuiderSettings(ProfileSection):
@@ -67,19 +84,19 @@ class SettingsProfile(Profile):
 
         :var pixelscale: pixel scale in arcseconds/pixel
         """
-        dither_size_pixels : float = 3.0
-        dither_settle_pixels : float = 0.5
-        dither_settle_time : float = 10.0
-        dither_settle_timeout : float = 60.0
-        dither_operation_timeout : float = 90.0
+        dither_size_pixels: float = 3.0
+        dither_settle_pixels: float = 0.5
+        dither_settle_time: float = 10.0
+        dither_settle_timeout: float = 60.0
+        dither_operation_timeout: float = 90.0
 
-        guide_settle_pixels : float = 0.5
-        guide_settle_time : float = 10.0
-        guide_settle_timeout : float = 60.0
-        guide_operation_timeout : float = 90.0
+        guide_settle_pixels: float = 0.5
+        guide_settle_time: float = 10.0
+        guide_settle_timeout: float = 60.0
+        guide_operation_timeout: float = 90.0
 
         # name of section in YAML output and attribute name
-        _sectionname : str = 'guider'
+        _sectionname: str = 'guider'
 
     @dataclass
     class AutoFocusSettings(ProfileSection):
@@ -96,20 +113,20 @@ class SettingsProfile(Profile):
 #        :var exposure_max: Maximum exposure time (seconds) allowed
 #        :var exposure_min: Minimum exposure time (seconds) allowed
 #        :var final_offset: Value to be added to final focus position
-        start_hfd : float = 25.0
-        near_hfd : float = 12.0
-        focus_delay : float = 0.0
-        focus_dir : str = 'IN'
-        exposure_start : float = 1.0
-        exposure_max : float = 8.0
-        exposure_min : float = 0.5
-        maximum_hfd : float = 100
-        final_offset : int = 0
-        star_mag_for_filter : dict = field(default_factory=dict)
-        focus_exposure_for_filter : dict = field(default_factory=dict)
+        start_hfd: float = 25.0
+        near_hfd: float = 12.0
+        focus_delay: float = 0.0
+        focus_dir: str = 'IN'
+        exposure_start: float = 1.0
+        exposure_max: float = 8.0
+        exposure_min: float = 0.5
+        maximum_hfd: float = 100
+        final_offset: int = 0
+        star_mag_for_filter: dict = field(default_factory=dict)
+        focus_exposure_for_filter: dict = field(default_factory=dict)
 
         # name of section in YAML output and attribute name
-        _sectionname : str = 'autofocus'
+        _sectionname: str = 'autofocus'
 
         def preferred_star_mag(self, filter_name):
             mag = self.star_mag_for_filter.get(filter_name, None)
@@ -126,10 +143,10 @@ class SettingsProfile(Profile):
 
         :var base_target_dir: Directory which sequences are stored under.
         """
-        base_target_dir : str = None
+        base_target_dir: str = None
 
         # name of section in YAML output and attribute name
-        _sectionname : str = 'sequence'
+        _sectionname: str = 'sequence'
 
     def __init__(self, reldir, name=None):
         super().__init__(reldir, name)

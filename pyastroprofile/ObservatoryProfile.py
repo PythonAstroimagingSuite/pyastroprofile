@@ -1,6 +1,22 @@
 #
 # store observatory profiles
 #
+# Copyright 2020 Michael Fulbright
+#
+#
+#    pyastroprofile is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
 import os
 import logging
 from dataclasses import dataclass
@@ -44,19 +60,19 @@ class ObservatoryProfile(Profile):
 
     @dataclass
     class Location(ProfileSection):
-        _sectionname : str = 'location'
+        _sectionname: str = 'location'
         #: Name of observing location
-        obsname : str = None
+        obsname: str = None
         #: Latitude in degrees
-        latitude : float = None
+        latitud: float = None
         #: Longitude in degrees
-        longitude : float = None
+        longitude: float = None
         #: Altitude in meters
-        altitude : float = None
+        altitude: float = None
         #: Timezone string
-        timezone : str = None
+        timezone: str = None
         #: Horizon definition
-        horizon_file : str = None
+        horizon_file: str = None
 
     def __init__(self, reldir, name=None):
         super().__init__(reldir, name)
@@ -72,29 +88,32 @@ class ObservatoryProfile(Profile):
 
         # now try to load horizon file
         if self.location.horizon_file is not None:
-            logging.debug(f'ObservatoryProfile: horizon file = {self.location.horizon_file}')
+            logging.debug('ObservatoryProfile: horizon file = '
+                          f'{self.location.horizon_file}')
 
             # if horizon file specification does not have a leading
             # directory specification assume it is in the 'astroprofiles/observatories'
             # directory
             if os.path.dirname(self.location.horizon_file) == '':
-                hzn_dir =  self._get_config_dir()
+                hzn_dir = self._get_config_dir()
             else:
                 hzn_dir = ''
+
             hzn_file = os.path.join(hzn_dir, self.location.horizon_file)
             logging.debug(f'loading horizon file {hzn_file}')
+
             rc = self._horizon.readfile(hzn_file)
             if not rc:
                 logging.error('ObservatoryProfile: Unable to load horizon!')
             return rc
 
     def _data_complete(self):
-        l = [self.location.obsname,
-             self.location.latitude,
-             self.location.longitude,
-             self.location.altitude,
-             self.location.timezone]
-        return (l.count(None) == 0)
+        lst = [self.location.obsname,
+               self.location.latitude,
+               self.location.longitude,
+               self.location.altitude,
+               self.location.timezone]
+        return (lst.count(None) == 0)
 
     def __getattr__(self, attr):
         #logging.info(f'{self.__dict__}')
@@ -102,9 +121,9 @@ class ObservatoryProfile(Profile):
         # we construct on the fly from 'real' config items
         if attr == 'observer':
             if self._data_complete():
-                return Observer(longitude=self.location.longitude*u.deg,
-                                latitude=self.location.latitude*u.deg,
-                                elevation=self.location.altitude*u.m,
+                return Observer(longitude=self.location.longitude * u.deg,
+                                latitude=self.location.latitude * u.deg,
+                                elevation=self.location.altitude * u.m,
                                 timezone=self.location.timezone,
                                 name=self.location.obsname)
             else:

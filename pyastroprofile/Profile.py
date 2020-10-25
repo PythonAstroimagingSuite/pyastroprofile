@@ -1,5 +1,24 @@
 #
-# handles a profile
+# Profile handling using ConfigObj (deprecated)
+#
+# store observatory profiles
+#
+# Copyright 2020 Michael Fulbright
+#
+#
+#    pyastroprofile is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
 #
 # a profile is a config file describing settings for a given application
 #
@@ -52,8 +71,8 @@ def get_default_profile(loc):
     if os.path.isfile(def_file):
         with open(def_file, 'r') as f:
             try:
-                l = f.readline().strip()
-                key, val = l.split('=')
+                line = f.readline().strip()
+                key, val = line.split('=')
                 if key == 'default':
                     def_name = val
             except Exception:
@@ -67,6 +86,7 @@ def get_default_profile(loc):
 
 class Profile:
     """Stores program settings which can be saved persistently"""
+
     def __init__(self, reldir, name=None):
         """Set some defaults for program settings
 
@@ -86,7 +106,7 @@ class Profile:
         self._config_reldir = reldir
 
         # if name is none see if a default exists
-        if name == None or name == 'default':
+        if name is None or name == 'default':
             name = self._find_default()
             if name is None:
                 raise NoDefaultProfile
@@ -110,6 +130,7 @@ class Profile:
 #
 #        logging.debug(f'Using default profile = {def_name}')
 #        return def_name
+
     def _find_default(self):
         # get_default_profile() accepts a relative path from base config dir
         return get_default_profile(self._config_reldir)
@@ -152,7 +173,8 @@ class Profile:
             base_config_dir = get_base_config_dir()
             config_dir = os.path.join(base_config_dir, self._config_reldir)
         else:
-            logging.error('ProgramSettings: Unable to determine OS for config_dir loc!')
+            logging.error('ProgramSettings: Unable to determine OS '
+                          'for config_dir loc!')
             config_dir = None
         return config_dir
 
@@ -168,11 +190,12 @@ class Profile:
         # check if config directory exists
         if not os.path.isdir(self._get_config_dir()):
             if os.path.exists(self._get_config_dir()):
-                logging.error(f'write settings: config dir {self._get_config_dir()}' + \
+                logging.error(f'write settings: config dir {self._get_config_dir()}'
                               f' already exists and is not a directory!')
                 return False
             else:
-                logging.info(f'write settings: creating config dir {self._get_config_dir()}')
+                logging.info('write settings: creating config dir '
+                             f'{self._get_config_dir()}')
                 os.makedirs(self._get_config_dir())
 
         logging.info(f'config filename: {self._config.filename}')
@@ -184,7 +207,8 @@ class Profile:
             config = ConfigObj(self._get_config_filename(), unrepr=True,
                                file_error=True, raise_errors=True)
         except Exception:
-            logging.error('Error creating config object in Profile.read()', exc_info=True)
+            logging.error('Error creating config object in Profile.read()',
+                          exc_info=True)
             config = None
 
         if config is None:
