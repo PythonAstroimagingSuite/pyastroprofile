@@ -1,5 +1,5 @@
 astropy>3.1.0
-astroplan=>0.4
-numpy=>1.16.0
+astroplan>=0.4
+numpy>=1.16.0
 configobj==5.0.6
-PyYAML=>5.3.0
+PyYAML>=5.3.0
