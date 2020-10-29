@@ -1,112 +1,1099 @@
 
+
 <!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pyastroprofile package &mdash; pyastroprofile 0.1 documentation</title>
+  
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pyastroprofile package &#8212; pyastroprofile 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
-  </head><body>
-    <div class="header-wrapper" role="banner">
-      <div class="header">
-        <div class="headertitle"><a
-          href="index.html">pyastroprofile 0.1 documentation</a></div>
-        <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-       </div>
-    </div>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="pyastroprofile" href="modules.html" /> 
+</head>
 
-    <div class="content-wrapper">
-      <div class="content">
-        <div class="document">
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pyastroprofile
+          
+
+          
+          </a>
+
+          
             
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyastroprofile</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pyastroprofile package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyastroprofile.AstroProfile">pyastroprofile.AstroProfile module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyastroprofile.EquipmentProfile">pyastroprofile.EquipmentProfile module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyastroprofile.Horizon">pyastroprofile.Horizon module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyastroprofile.ObservatoryProfile">pyastroprofile.ObservatoryProfile module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyastroprofile.Profile">pyastroprofile.Profile module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyastroprofile.ProfileDict">pyastroprofile.ProfileDict module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyastroprofile.ProgramsProfile">pyastroprofile.ProgramsProfile module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyastroprofile.SettingsProfile">pyastroprofile.SettingsProfile module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyastroprofile">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyastroprofile</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pyastroprofile</a> &raquo;</li>
+        
+      <li>pyastroprofile package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pyastroprofile.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="pyastroprofile-package">
 <h1>pyastroprofile package<a class="headerlink" href="#pyastroprofile-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="pyastroprofile-astroprofile-module">
-<h2>pyastroprofile.AstroProfile module<a class="headerlink" href="#pyastroprofile-astroprofile-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pyastroprofile.AstroProfile">
+<span id="pyastroprofile-astroprofile-module"></span><h2>pyastroprofile.AstroProfile module<a class="headerlink" href="#module-pyastroprofile.AstroProfile" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyastroprofile.AstroProfile.AstroProfile">
+<em class="property">class </em><code class="sig-prename descclassname">pyastroprofile.AstroProfile.</code><code class="sig-name descname">AstroProfile</code><a class="headerlink" href="#pyastroprofile.AstroProfile.AstroProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class acts as a container to hold other profiles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reldir</strong> – Path relative to the system configuration directory
+to store the yaml settings file.</p></li>
+<li><p><strong>name</strong> – The name of the settings file <strong>WITHOUT</strong> the ‘.yaml’ extension.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Currently the profiles stored are:</dt><dd><ul class="simple">
+<li><p>equipment (<code class="xref py py-class docutils literal notranslate"><span class="pre">EquipmentProfile</span></code>)</p></li>
+<li><p>observatory (<code class="xref py py-class docutils literal notranslate"><span class="pre">ObservatoryProfile</span></code>)</p></li>
+<li><p>settings (<code class="xref py py-class docutils literal notranslate"><span class="pre">SettingsProfile</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Access is done as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyastroprofile.AstroProfile</span> <span class="k">import</span> <span class="n">AstroProfile</span>
+<span class="n">ap</span> <span class="o">=</span> <span class="n">AstroProfile</span><span class="p">()</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;myastroprofile&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;latitude is &#39;</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">observatory</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">latitude</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;camera driver is &#39;</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">equipment</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pixelscale is &#39;</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">platesolve</span><span class="o">.</span><span class="n">pixelscale</span><span class="p">)</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">observatory</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">altitude</span> <span class="o">=</span> <span class="mf">300.0</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">equipment</span><span class="o">.</span><span class="n">focuser</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="s1">&#39;Focuser Simulator&#39;</span>
+<span class="n">ap</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="section" id="pyastroprofile-equipmentprofile-module">
-<h2>pyastroprofile.EquipmentProfile module<a class="headerlink" href="#pyastroprofile-equipmentprofile-module" title="Permalink to this headline">¶</a></h2>
+<p>The astroprofile is stored in the file in the directory
+<a class="reference internal" href="#pyastroprofile.AstroProfile.get_astroprofile_base_dir" title="pyastroprofile.AstroProfile.get_astroprofile_base_dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_astroprofile_base_dir()</span></code></a> and contains the names of
+the individual profile files for the different profiles
+contained by the <a class="reference internal" href="#pyastroprofile.AstroProfile.AstroProfile" title="pyastroprofile.AstroProfile.AstroProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstroProfile</span></code></a>.</p>
+<dl class="py method">
+<dt id="pyastroprofile.AstroProfile.AstroProfile.create_reference">
+<code class="sig-name descname">create_reference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ref_name</span></em>, <em class="sig-param"><span class="n">equipment_profile</span></em>, <em class="sig-param"><span class="n">observatory_profile</span></em>, <em class="sig-param"><span class="n">settings_profile</span></em>, <em class="sig-param"><span class="n">overwrite</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.AstroProfile.AstroProfile.create_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an astroprofile reference file which declares the
+other profiles to be contained within this astroprofile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref_name</strong> (<em>str</em>) – Name of the reference file.</p></li>
+<li><p><strong>equipment_profile</strong> (<em>str</em>) – Name of the equipment profile.</p></li>
+<li><p><strong>observatory_profile</strong> (<em>str</em>) – Name of the observatory profile.</p></li>
+<li><p><strong>settings_profile</strong> (<em>str</em>) – Name of the settings profile.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em>) – Whether to overwrite existing file or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.AstroProfile.AstroProfile.equipment">
+<code class="sig-name descname">equipment</code><a class="headerlink" href="#pyastroprofile.AstroProfile.AstroProfile.equipment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use to access the equipment profile.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.AstroProfile.AstroProfile.observatory">
+<code class="sig-name descname">observatory</code><a class="headerlink" href="#pyastroprofile.AstroProfile.AstroProfile.observatory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use to access the observatory profile.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.AstroProfile.AstroProfile.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.AstroProfile.AstroProfile.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read an <a class="reference internal" href="#pyastroprofile.AstroProfile.AstroProfile" title="pyastroprofile.AstroProfile.AstroProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstroProfile</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of astroprofile file to be loaded.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.AstroProfile.AstroProfile.settings">
+<code class="sig-name descname">settings</code><a class="headerlink" href="#pyastroprofile.AstroProfile.AstroProfile.settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use to access the settings profile.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyastroprofile.AstroProfile.get_astroprofile_base_dir">
+<code class="sig-prename descclassname">pyastroprofile.AstroProfile.</code><code class="sig-name descname">get_astroprofile_base_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.AstroProfile.get_astroprofile_base_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the base directory for astroprofile files.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyastroprofile.AstroProfile.get_available_profiles">
+<code class="sig-prename descclassname">pyastroprofile.AstroProfile.</code><code class="sig-name descname">get_available_profiles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.AstroProfile.get_available_profiles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
-<div class="section" id="pyastroprofile-observatoryprofile-module">
-<h2>pyastroprofile.ObservatoryProfile module<a class="headerlink" href="#pyastroprofile-observatoryprofile-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pyastroprofile.EquipmentProfile">
+<span id="pyastroprofile-equipmentprofile-module"></span><h2>pyastroprofile.EquipmentProfile module<a class="headerlink" href="#module-pyastroprofile.EquipmentProfile" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile">
+<em class="property">class </em><code class="sig-prename descclassname">pyastroprofile.EquipmentProfile.</code><code class="sig-name descname">EquipmentProfile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reldir</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.Profile" title="pyastroprofile.ProfileDict.Profile"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.Profile</span></code></a></p>
+<p>This class represents the equipment profile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reldir</strong> – Path relative to the system configuration directory
+to store the yaml settings file.</p></li>
+<li><p><strong>name</strong> – The name of the settings file <strong>WITHOUT</strong> the ‘.yaml’ extension.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Currently the settings stored are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>backend</p></li>
+<li><p>focuser</p></li>
+<li><p>filterwheel</p></li>
+<li><p>camera</p></li>
+<li><p>mount</p></li>
+<li><p>telescope</p></li>
+</ul>
+</div></blockquote>
+<p>Access is done as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyastroprofile.EquipmentProfile</span> <span class="k">import</span> <span class="n">EquipmentProfile</span>
+<span class="n">ep</span> <span class="o">=</span> <span class="n">EquipmentProfile</span><span class="p">(</span><span class="n">reldir</span><span class="o">=</span><span class="s1">&#39;equipment&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;myequipment&#39;</span><span class="p">)</span>
+<span class="n">ep</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;camera driver is &#39;</span><span class="p">,</span> <span class="n">ep</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span>
+<span class="n">ep</span><span class="o">.</span><span class="n">telscope</span><span class="o">.</span><span class="n">focal_length</span> <span class="o">=</span> <span class="mf">1000.0</span>
+<span class="n">ep</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="section" id="pyastroprofile-profiledict-module">
-<h2>pyastroprofile.ProfileDict module<a class="headerlink" href="#pyastroprofile-profiledict-module" title="Permalink to this headline">¶</a></h2>
+<p>This example will create the file ‘&lt;system config dir&gt;/equipment/myequipment.yaml’</p>
+<p><strong>NOTE</strong>: It is recommended to use the <code class="xref py py-class docutils literal notranslate"><span class="pre">AstroProfile</span></code> class for
+accessing these settings as it includes the <code class="xref py py-class docutils literal notranslate"><span class="pre">ObservatoryProfile</span></code> class.</p>
+<p>Set some defaults for program settings</p>
+<dl>
+<dt>reldir - location relative to top of default config location</dt><dd><blockquote>
+<div><p>If None then will be relative to current working directory!</p>
+</div></blockquote>
+<p>ex. “hfdfocus/devices” would create the dir “hfdfocus/device”</p>
+</dd>
+<dt>name - name of config file</dt><dd><p>If set to None then a default will be searched for.</p>
+</dd>
+</dl>
+<p>reldir = “hfdfocus/devices” and name = “C8F7.ini” would create
+a file  &lt;configbasedir&gt;/hfdfocus/C8F7.ini</p>
+<p>Will raise NoDefaultProfile is name is None and no profile is defined</p>
+<dl class="py class">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Backend">
+<em class="property">class </em><code class="sig-name descname">Backend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">_sectionname</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'backend'</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Not Set'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Backend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>Backend(_sectionname: str = ‘backend’, name: str = ‘Not Set’)</p>
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Backend.name">
+<code class="sig-name descname">name</code><em class="property">: str</em><em class="property"> = 'Not Set'</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Backend.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Camera driver</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Camera">
+<em class="property">class </em><code class="sig-name descname">Camera</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">_sectionname</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'camera'</span></em>, <em class="sig-param"><span class="n">backend</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Not Set'</span></em>, <em class="sig-param"><span class="n">driver</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Not Set'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Camera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>Camera(_sectionname: str = ‘camera’, backend: str = ‘Not Set’, driver: str = ‘Not Set’)</p>
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Camera.backend">
+<code class="sig-name descname">backend</code><em class="property">: str</em><em class="property"> = 'Not Set'</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Camera.backend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Camera.driver">
+<code class="sig-name descname">driver</code><em class="property">: str</em><em class="property"> = 'Not Set'</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Camera.driver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Camera driver</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.FilterWheel">
+<em class="property">class </em><code class="sig-name descname">FilterWheel</code><span class="sig-paren">(</span><em class="sig-param">_sectionname: str = 'filterwheel'</em>, <em class="sig-param">backend: str = 'Not Set'</em>, <em class="sig-param">driver: str = 'Not Set'</em>, <em class="sig-param">names: list = &lt;factory&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.FilterWheel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>FilterWheel(_sectionname: str = ‘filterwheel’, backend: str = ‘Not Set’, driver: str = ‘Not Set’, names: list = &lt;factory&gt;)</p>
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.FilterWheel.backend">
+<code class="sig-name descname">backend</code><em class="property">: str</em><em class="property"> = 'Not Set'</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.FilterWheel.backend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.FilterWheel.driver">
+<code class="sig-name descname">driver</code><em class="property">: str</em><em class="property"> = 'Not Set'</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.FilterWheel.driver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter wheel driver</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.FilterWheel.names">
+<code class="sig-name descname">names</code><em class="property">: list</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.FilterWheel.names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.FilterWheel.num_filters">
+<em class="property">property </em><code class="sig-name descname">num_filters</code><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.FilterWheel.num_filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Focuser">
+<em class="property">class </em><code class="sig-name descname">Focuser</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">_sectionname</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'focuser'</span></em>, <em class="sig-param"><span class="n">backend</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Not Set'</span></em>, <em class="sig-param"><span class="n">driver</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Not Set'</span></em>, <em class="sig-param"><span class="n">minpos</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">maxpos</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Focuser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>Focuser(_sectionname: str = ‘focuser’, backend: str = ‘Not Set’, driver: str = ‘Not Set’, minpos: int = 0, maxpos: int = 0)</p>
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Focuser.backend">
+<code class="sig-name descname">backend</code><em class="property">: str</em><em class="property"> = 'Not Set'</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Focuser.backend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Focuser.driver">
+<code class="sig-name descname">driver</code><em class="property">: str</em><em class="property"> = 'Not Set'</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Focuser.driver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Focuser driver</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Focuser.maxpos">
+<code class="sig-name descname">maxpos</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Focuser.maxpos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum allowed position for focuser</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Focuser.minpos">
+<code class="sig-name descname">minpos</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Focuser.minpos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum allowed position for focuser</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Mount">
+<em class="property">class </em><code class="sig-name descname">Mount</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">_sectionname</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'mount'</span></em>, <em class="sig-param"><span class="n">backend</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Not Set'</span></em>, <em class="sig-param"><span class="n">driver</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Not Set'</span></em>, <em class="sig-param"><span class="n">pierside_reporting</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Not set'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Mount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>Mount(_sectionname: str = ‘mount’, backend: str = ‘Not Set’, driver: str = ‘Not Set’, pierside_reporting: str = ‘Not set’)</p>
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Mount.backend">
+<code class="sig-name descname">backend</code><em class="property">: str</em><em class="property"> = 'Not Set'</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Mount.backend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Mount.driver">
+<code class="sig-name descname">driver</code><em class="property">: str</em><em class="property"> = 'Not Set'</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Mount.driver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mount driver</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Mount.pierside_reporting">
+<code class="sig-name descname">pierside_reporting</code><em class="property">: str</em><em class="property"> = 'Not set'</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Mount.pierside_reporting" title="Permalink to this definition">¶</a></dt>
+<dd><p>pier side reporting hint</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Telescope">
+<em class="property">class </em><code class="sig-name descname">Telescope</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">_sectionname</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'telescope'</span></em>, <em class="sig-param"><span class="n">focal_length</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">aperture</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">obstruction</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Telescope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>Telescope(_sectionname: str = ‘telescope’, focal_length: int = 0, aperture: int = 0, obstruction: int = 0)</p>
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Telescope.aperture">
+<code class="sig-name descname">aperture</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Telescope.aperture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aperture of telescope</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Telescope.focal_length">
+<code class="sig-name descname">focal_length</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Telescope.focal_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Focal length of telescope</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.EquipmentProfile.EquipmentProfile.Telescope.obstruction">
+<code class="sig-name descname">obstruction</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#pyastroprofile.EquipmentProfile.EquipmentProfile.Telescope.obstruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obstruction of telescope</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="pyastroprofile-settingsprofile-module">
-<h2>pyastroprofile.SettingsProfile module<a class="headerlink" href="#pyastroprofile-settingsprofile-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pyastroprofile.Horizon">
+<span id="pyastroprofile-horizon-module"></span><h2>pyastroprofile.Horizon module<a class="headerlink" href="#module-pyastroprofile.Horizon" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyastroprofile.Horizon.Horizon">
+<em class="property">class </em><code class="sig-prename descclassname">pyastroprofile.Horizon.</code><code class="sig-name descname">Horizon</code><a class="headerlink" href="#pyastroprofile.Horizon.Horizon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="pyastroprofile.Horizon.Horizon.create_horizon_map">
+<code class="sig-name descname">create_horizon_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Horizon.Horizon.create_horizon_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.Horizon.Horizon.get_alt">
+<code class="sig-name descname">get_alt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">az</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Horizon.Horizon.get_alt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.Horizon.Horizon.readfile">
+<code class="sig-name descname">readfile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">horizon_file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Horizon.Horizon.readfile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pyastroprofile.ObservatoryProfile">
+<span id="pyastroprofile-observatoryprofile-module"></span><h2>pyastroprofile.ObservatoryProfile module<a class="headerlink" href="#module-pyastroprofile.ObservatoryProfile" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyastroprofile.ObservatoryProfile.ObservatoryProfile">
+<em class="property">class </em><code class="sig-prename descclassname">pyastroprofile.ObservatoryProfile.</code><code class="sig-name descname">ObservatoryProfile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reldir</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ObservatoryProfile.ObservatoryProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.Profile" title="pyastroprofile.ProfileDict.Profile"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.Profile</span></code></a></p>
+<p>This class represents the observing location including
+geographical and time relating settings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reldir</strong> – Path relative to the system configuration directory
+to store the yaml settings file.</p></li>
+<li><p><strong>name</strong> – The name of the settings file <strong>WITHOUT</strong> the ‘.yaml’ extension.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Currently the parameter stored is:</dt><dd><ul class="simple">
+<li><p>location</p></li>
+</ul>
+</dd>
+</dl>
+<p>Access is done as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyastroprofile.ObservatoryProfile</span> <span class="k">import</span> <span class="n">ObservatoryProfile</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">ObservatoryProfile</span><span class="p">(</span><span class="n">reldir</span><span class="o">=</span><span class="s1">&#39;observatories&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;myobservatory&#39;</span><span class="p">)</span>
+<span class="n">op</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;latitude is &#39;</span><span class="p">,</span> <span class="n">op</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">latitude</span><span class="p">)</span>
+<span class="n">op</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">altitude</span> <span class="o">=</span> <span class="mf">300.0</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This example will create the file ‘&lt;system config dir&gt;/observatories/myobservatory.yaml’</p>
+<p><strong>NOTE</strong>: It is recommended to use the <code class="xref py py-class docutils literal notranslate"><span class="pre">AstroProfile</span></code> class for
+accessing these settings as it includes the <a class="reference internal" href="#pyastroprofile.ObservatoryProfile.ObservatoryProfile" title="pyastroprofile.ObservatoryProfile.ObservatoryProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservatoryProfile</span></code></a> class.</p>
+<p>Set some defaults for program settings</p>
+<dl>
+<dt>reldir - location relative to top of default config location</dt><dd><blockquote>
+<div><p>If None then will be relative to current working directory!</p>
+</div></blockquote>
+<p>ex. “hfdfocus/devices” would create the dir “hfdfocus/device”</p>
+</dd>
+<dt>name - name of config file</dt><dd><p>If set to None then a default will be searched for.</p>
+</dd>
+</dl>
+<p>reldir = “hfdfocus/devices” and name = “C8F7.ini” would create
+a file  &lt;configbasedir&gt;/hfdfocus/C8F7.ini</p>
+<p>Will raise NoDefaultProfile is name is None and no profile is defined</p>
+<dl class="py class">
+<dt id="pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location">
+<em class="property">class </em><code class="sig-name descname">Location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">_sectionname</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'location'</span></em>, <em class="sig-param"><span class="n">obsname</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">latitud</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">longitude</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">altitude</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">timezone</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">horizon_file</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>Location(_sectionname: str = ‘location’, obsname: str = None, latitud: float = None, longitude: float = None, altitude: float = None, timezone: str = None, horizon_file: str = None)</p>
+<dl class="py attribute">
+<dt id="pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.altitude">
+<code class="sig-name descname">altitude</code><em class="property">: float</em><em class="property"> = None</em><a class="headerlink" href="#pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.altitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Altitude in meters</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.horizon_file">
+<code class="sig-name descname">horizon_file</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.horizon_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Horizon definition</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.latitud">
+<code class="sig-name descname">latitud</code><em class="property">: float</em><em class="property"> = None</em><a class="headerlink" href="#pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.latitud" title="Permalink to this definition">¶</a></dt>
+<dd><p>Latitude in degrees</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.longitude">
+<code class="sig-name descname">longitude</code><em class="property">: float</em><em class="property"> = None</em><a class="headerlink" href="#pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.longitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Longitude in degrees</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.obsname">
+<code class="sig-name descname">obsname</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.obsname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of observing location</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.timezone">
+<code class="sig-name descname">timezone</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#pyastroprofile.ObservatoryProfile.ObservatoryProfile.Location.timezone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Timezone string</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.ObservatoryProfile.ObservatoryProfile.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ObservatoryProfile.ObservatoryProfile.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyastroprofile.Profile">
+<span id="pyastroprofile-profile-module"></span><h2>pyastroprofile.Profile module<a class="headerlink" href="#module-pyastroprofile.Profile" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt id="pyastroprofile.Profile.NoDefaultProfile">
+<em class="property">exception </em><code class="sig-prename descclassname">pyastroprofile.Profile.</code><code class="sig-name descname">NoDefaultProfile</code><a class="headerlink" href="#pyastroprofile.Profile.NoDefaultProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>raised if no default profile exists</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.Profile.Profile">
+<em class="property">class </em><code class="sig-prename descclassname">pyastroprofile.Profile.</code><code class="sig-name descname">Profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reldir</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Profile.Profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Stores program settings which can be saved persistently</p>
+<p>Set some defaults for program settings</p>
+<dl class="simple">
+<dt>reldir - location relative to top of default config location</dt><dd><p>ex. “hfdfocus/devices” would create the dir “hfdfocus/device”</p>
+</dd>
+<dt>name - name of config file</dt><dd><p>If set to None then a default will be searched for.</p>
+</dd>
+</dl>
+<p>reldir = “hfdfocus/devices” and name = “C8F7.ini” would create
+a file  &lt;configbasedir&gt;/hfdfocus/C8F7.ini</p>
+<p>Will raise NoDefaultProfile is name is None and no profile is defined</p>
+<dl class="py method">
+<dt id="pyastroprofile.Profile.Profile.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attr</span></em>, <em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Profile.Profile.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.Profile.Profile.get_default">
+<code class="sig-name descname">get_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Profile.Profile.get_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.Profile.Profile.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Profile.Profile.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.Profile.Profile.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Profile.Profile.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyastroprofile.Profile.find_profiles">
+<code class="sig-prename descclassname">pyastroprofile.Profile.</code><code class="sig-name descname">find_profiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Profile.find_profiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assumes profiles end with .ini</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyastroprofile.Profile.get_base_config_dir">
+<code class="sig-prename descclassname">pyastroprofile.Profile.</code><code class="sig-name descname">get_base_config_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Profile.get_base_config_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pyastroprofile.Profile.get_default_profile">
+<code class="sig-prename descclassname">pyastroprofile.Profile.</code><code class="sig-name descname">get_default_profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Profile.get_default_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>See if DEFAULT_PROFILE file exists and check it for the
+name of the default profile</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyastroprofile.Profile.set_default_profile">
+<code class="sig-prename descclassname">pyastroprofile.Profile.</code><code class="sig-name descname">set_default_profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.Profile.set_default_profile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-pyastroprofile.ProfileDict">
+<span id="pyastroprofile-profiledict-module"></span><h2>pyastroprofile.ProfileDict module<a class="headerlink" href="#module-pyastroprofile.ProfileDict" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt id="pyastroprofile.ProfileDict.NoDefaultProfile">
+<em class="property">exception </em><code class="sig-prename descclassname">pyastroprofile.ProfileDict.</code><code class="sig-name descname">NoDefaultProfile</code><a class="headerlink" href="#pyastroprofile.ProfileDict.NoDefaultProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>raised if no default profile exists</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.ProfileDict.Profile">
+<em class="property">class </em><code class="sig-prename descclassname">pyastroprofile.ProfileDict.</code><code class="sig-name descname">Profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reldir</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProfileDict.Profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Stores program settings which can be saved persistently</p>
+<p>Set some defaults for program settings</p>
+<dl>
+<dt>reldir - location relative to top of default config location</dt><dd><blockquote>
+<div><p>If None then will be relative to current working directory!</p>
+</div></blockquote>
+<p>ex. “hfdfocus/devices” would create the dir “hfdfocus/device”</p>
+</dd>
+<dt>name - name of config file</dt><dd><p>If set to None then a default will be searched for.</p>
+</dd>
+</dl>
+<p>reldir = “hfdfocus/devices” and name = “C8F7.ini” would create
+a file  &lt;configbasedir&gt;/hfdfocus/C8F7.ini</p>
+<p>Will raise NoDefaultProfile is name is None and no profile is defined</p>
+<dl class="py method">
+<dt id="pyastroprofile.ProfileDict.Profile.add_section">
+<code class="sig-name descname">add_section</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sectionclass</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProfileDict.Profile.add_section" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.ProfileDict.Profile.get_default">
+<code class="sig-name descname">get_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProfileDict.Profile.get_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.ProfileDict.Profile.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProfileDict.Profile.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.ProfileDict.Profile.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProfileDict.Profile.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.ProfileDict.ProfileSection">
+<em class="property">class </em><code class="sig-prename descclassname">pyastroprofile.ProfileDict.</code><code class="sig-name descname">ProfileSection</code><a class="headerlink" href="#pyastroprofile.ProfileDict.ProfileSection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="pyastroprofile.ProfileDict.ProfileSection.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProfileDict.ProfileSection.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyastroprofile.ProfileDict.find_profiles">
+<code class="sig-prename descclassname">pyastroprofile.ProfileDict.</code><code class="sig-name descname">find_profiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProfileDict.find_profiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assumes profiles end with .ini</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyastroprofile.ProfileDict.get_base_config_dir">
+<code class="sig-prename descclassname">pyastroprofile.ProfileDict.</code><code class="sig-name descname">get_base_config_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProfileDict.get_base_config_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pyastroprofile.ProfileDict.get_default_profile">
+<code class="sig-prename descclassname">pyastroprofile.ProfileDict.</code><code class="sig-name descname">get_default_profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProfileDict.get_default_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>See if DEFAULT_PROFILE file exists and check it for the
+name of the default profile</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyastroprofile.ProfileDict.set_default_profile">
+<code class="sig-prename descclassname">pyastroprofile.ProfileDict.</code><code class="sig-name descname">set_default_profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProfileDict.set_default_profile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-pyastroprofile.ProgramsProfile">
+<span id="pyastroprofile-programsprofile-module"></span><h2>pyastroprofile.ProgramsProfile module<a class="headerlink" href="#module-pyastroprofile.ProgramsProfile" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyastroprofile.ProgramsProfile.ObservatoryProfile">
+<em class="property">class </em><code class="sig-prename descclassname">pyastroprofile.ProgramsProfile.</code><code class="sig-name descname">ObservatoryProfile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reldir</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProgramsProfile.ObservatoryProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.Profile" title="pyastroprofile.ProfileDict.Profile"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.Profile</span></code></a></p>
+<p>Set some defaults for program settings</p>
+<dl>
+<dt>reldir - location relative to top of default config location</dt><dd><blockquote>
+<div><p>If None then will be relative to current working directory!</p>
+</div></blockquote>
+<p>ex. “hfdfocus/devices” would create the dir “hfdfocus/device”</p>
+</dd>
+<dt>name - name of config file</dt><dd><p>If set to None then a default will be searched for.</p>
+</dd>
+</dl>
+<p>reldir = “hfdfocus/devices” and name = “C8F7.ini” would create
+a file  &lt;configbasedir&gt;/hfdfocus/C8F7.ini</p>
+<p>Will raise NoDefaultProfile is name is None and no profile is defined</p>
+<dl class="py method">
+<dt id="pyastroprofile.ProgramsProfile.ObservatoryProfile.from_dict">
+<code class="sig-name descname">from_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProgramsProfile.ObservatoryProfile.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.ProgramsProfile.ObservatoryProfile.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.ProgramsProfile.ObservatoryProfile.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyastroprofile.SettingsProfile">
+<span id="pyastroprofile-settingsprofile-module"></span><h2>pyastroprofile.SettingsProfile module<a class="headerlink" href="#module-pyastroprofile.SettingsProfile" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile">
+<em class="property">class </em><code class="sig-prename descclassname">pyastroprofile.SettingsProfile.</code><code class="sig-name descname">SettingsProfile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reldir</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.Profile" title="pyastroprofile.ProfileDict.Profile"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.Profile</span></code></a></p>
+<p>This class represents the program settings for the various
+programs involved in the imaging tool chain.  Anything settings
+specific to a particular hardware profile will be stored here.
+Settings which are not specific to a hardware profile but are
+instead global to all profile (like the path to an executable)
+will be stored in a settings file specific to the particular
+program.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reldir</strong> – Path relative to the system configuration directory
+to store the yaml settings file.</p></li>
+<li><p><strong>name</strong> – The name of the settings file <strong>WITHOUT</strong> the ‘.yaml’ extension.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Currently the settings stored are:</dt><dd><ul class="simple">
+<li><p>platesolve</p></li>
+<li><p>autofocus</p></li>
+</ul>
+</dd>
+</dl>
+<p>Access is done as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyastroprofile.SettingsProfile</span> <span class="k">import</span> <span class="n">SettingsProfile</span>
+<span class="n">sp</span> <span class="o">=</span> <span class="n">SettingsProfile</span><span class="p">(</span><span class="n">reldir</span><span class="o">=</span><span class="s1">&#39;settings&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;mysettings&#39;</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pixelscale is &#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">platesolve</span><span class="o">.</span><span class="n">pixelscale</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;focus direction is &#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">autofocus</span><span class="o">.</span><span class="n">focus_dir</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">platesolve</span><span class="o">.</span><span class="n">pixelscale</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This example will create the file ‘&lt;system config dir&gt;/settings/mysettings.yaml’</p>
+<p><strong>NOTE</strong>: It is recommended to use the <code class="xref py py-class docutils literal notranslate"><span class="pre">AstroProfile</span></code> class for
+accessing these settings as it includes the <a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile" title="pyastroprofile.SettingsProfile.SettingsProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">SettingsProfile</span></code></a> class.</p>
+<p>Set some defaults for program settings</p>
+<dl>
+<dt>reldir - location relative to top of default config location</dt><dd><blockquote>
+<div><p>If None then will be relative to current working directory!</p>
+</div></blockquote>
+<p>ex. “hfdfocus/devices” would create the dir “hfdfocus/device”</p>
+</dd>
+<dt>name - name of config file</dt><dd><p>If set to None then a default will be searched for.</p>
+</dd>
+</dl>
+<p>reldir = “hfdfocus/devices” and name = “C8F7.ini” would create
+a file  &lt;configbasedir&gt;/hfdfocus/C8F7.ini</p>
+<p>Will raise NoDefaultProfile is name is None and no profile is defined</p>
+<dl class="py class">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings">
+<em class="property">class </em><code class="sig-name descname">AutoFocusSettings</code><span class="sig-paren">(</span><em class="sig-param">start_hfd: float = 25.0</em>, <em class="sig-param">near_hfd: float = 12.0</em>, <em class="sig-param">focus_delay: float = 0.0</em>, <em class="sig-param">focus_dir: str = 'IN'</em>, <em class="sig-param">exposure_start: float = 1.0</em>, <em class="sig-param">exposure_max: float = 8.0</em>, <em class="sig-param">exposure_min: float = 0.5</em>, <em class="sig-param">maximum_hfd: float = 100</em>, <em class="sig-param">final_offset: int = 0</em>, <em class="sig-param">star_mag_for_filter: dict = &lt;factory&gt;</em>, <em class="sig-param">focus_exposure_for_filter: dict = &lt;factory&gt;</em>, <em class="sig-param">_sectionname: str = 'autofocus'</em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>This class stores settings related to autofocus
+for a particular hardware setting.</p>
+<p>This class stores settings related to autofocus
+for a particular hardware setting.</p>
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.exposure_max">
+<code class="sig-name descname">exposure_max</code><em class="property">: float</em><em class="property"> = 8.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.exposure_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.exposure_min">
+<code class="sig-name descname">exposure_min</code><em class="property">: float</em><em class="property"> = 0.5</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.exposure_min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.exposure_start">
+<code class="sig-name descname">exposure_start</code><em class="property">: float</em><em class="property"> = 1.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.exposure_start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.final_offset">
+<code class="sig-name descname">final_offset</code><em class="property">: int</em><em class="property"> = 0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.final_offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.focus_delay">
+<code class="sig-name descname">focus_delay</code><em class="property">: float</em><em class="property"> = 0.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.focus_delay" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.focus_dir">
+<code class="sig-name descname">focus_dir</code><em class="property">: str</em><em class="property"> = 'IN'</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.focus_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.focus_exposure_for_filter">
+<code class="sig-name descname">focus_exposure_for_filter</code><em class="property">: dict</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.focus_exposure_for_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.maximum_hfd">
+<code class="sig-name descname">maximum_hfd</code><em class="property">: float</em><em class="property"> = 100</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.maximum_hfd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.near_hfd">
+<code class="sig-name descname">near_hfd</code><em class="property">: float</em><em class="property"> = 12.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.near_hfd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.preferred_focus_exposure">
+<code class="sig-name descname">preferred_focus_exposure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filter_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.preferred_focus_exposure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.preferred_star_mag">
+<code class="sig-name descname">preferred_star_mag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filter_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.preferred_star_mag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.star_mag_for_filter">
+<code class="sig-name descname">star_mag_for_filter</code><em class="property">: dict</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.star_mag_for_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.start_hfd">
+<code class="sig-name descname">start_hfd</code><em class="property">: float</em><em class="property"> = 25.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.AutoFocusSettings.start_hfd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings">
+<em class="property">class </em><code class="sig-name descname">GuiderSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dither_size_pixels</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">3.0</span></em>, <em class="sig-param"><span class="n">dither_settle_pixels</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">dither_settle_time</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">10.0</span></em>, <em class="sig-param"><span class="n">dither_settle_timeout</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">60.0</span></em>, <em class="sig-param"><span class="n">dither_operation_timeout</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">90.0</span></em>, <em class="sig-param"><span class="n">guide_settle_pixels</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">guide_settle_time</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">10.0</span></em>, <em class="sig-param"><span class="n">guide_settle_timeout</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">60.0</span></em>, <em class="sig-param"><span class="n">guide_operation_timeout</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">90.0</span></em>, <em class="sig-param"><span class="n">_sectionname</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'guider'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>This class stores settings related to guiding
+for a particular hardware setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.pixelscale" title="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.pixelscale"><strong>pixelscale</strong></a> – pixel scale in arcseconds/pixel</p>
+</dd>
+</dl>
+<p>This class stores settings related to guiding
+for a particular hardware setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.pixelscale" title="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.pixelscale"><strong>pixelscale</strong></a> – pixel scale in arcseconds/pixel</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.dither_operation_timeout">
+<code class="sig-name descname">dither_operation_timeout</code><em class="property">: float</em><em class="property"> = 90.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.dither_operation_timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.dither_settle_pixels">
+<code class="sig-name descname">dither_settle_pixels</code><em class="property">: float</em><em class="property"> = 0.5</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.dither_settle_pixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.dither_settle_time">
+<code class="sig-name descname">dither_settle_time</code><em class="property">: float</em><em class="property"> = 10.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.dither_settle_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.dither_settle_timeout">
+<code class="sig-name descname">dither_settle_timeout</code><em class="property">: float</em><em class="property"> = 60.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.dither_settle_timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.dither_size_pixels">
+<code class="sig-name descname">dither_size_pixels</code><em class="property">: float</em><em class="property"> = 3.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.dither_size_pixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.guide_operation_timeout">
+<code class="sig-name descname">guide_operation_timeout</code><em class="property">: float</em><em class="property"> = 90.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.guide_operation_timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.guide_settle_pixels">
+<code class="sig-name descname">guide_settle_pixels</code><em class="property">: float</em><em class="property"> = 0.5</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.guide_settle_pixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.guide_settle_time">
+<code class="sig-name descname">guide_settle_time</code><em class="property">: float</em><em class="property"> = 10.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.guide_settle_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.guide_settle_timeout">
+<code class="sig-name descname">guide_settle_timeout</code><em class="property">: float</em><em class="property"> = 60.0</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.GuiderSettings.guide_settle_timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings">
+<em class="property">class </em><code class="sig-name descname">PlateSolveSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pixelscale</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">5.7</span></em>, <em class="sig-param"><span class="n">prefer_filter</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">binning</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2</span></em>, <em class="sig-param"><span class="n">solver</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">_sectionname</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'platesolve'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>This class stores settings related to plate solving
+for a particular hardware setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.pixelscale" title="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.pixelscale"><strong>pixelscale</strong></a> – pixel scale in arcseconds/pixel</p></li>
+<li><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.prefer_filter" title="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.prefer_filter"><strong>prefer_filter</strong></a> – preferred filter for solving</p></li>
+<li><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.binning" title="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.binning"><strong>binning</strong></a> – preferred binning for image used to plate solve</p></li>
+<li><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.solver" title="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.solver"><strong>solver</strong></a> – name of solver to use</p></li>
+</ul>
+</dd>
+</dl>
+<p>This class stores settings related to plate solving
+for a particular hardware setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.pixelscale" title="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.pixelscale"><strong>pixelscale</strong></a> – pixel scale in arcseconds/pixel</p></li>
+<li><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.prefer_filter" title="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.prefer_filter"><strong>prefer_filter</strong></a> – preferred filter for solving</p></li>
+<li><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.binning" title="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.binning"><strong>binning</strong></a> – preferred binning for image used to plate solve</p></li>
+<li><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.solver" title="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.solver"><strong>solver</strong></a> – name of solver to use</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.binning">
+<code class="sig-name descname">binning</code><em class="property">: int</em><em class="property"> = 2</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.binning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.pixelscale">
+<code class="sig-name descname">pixelscale</code><em class="property">: float</em><em class="property"> = 5.7</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.pixelscale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.prefer_filter">
+<code class="sig-name descname">prefer_filter</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.prefer_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.solver">
+<code class="sig-name descname">solver</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.PlateSolveSettings.solver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.SequenceSettings">
+<em class="property">class </em><code class="sig-name descname">SequenceSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_target_dir</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">_sectionname</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'sequence'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.SequenceSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyastroprofile.ProfileDict.ProfileSection" title="pyastroprofile.ProfileDict.ProfileSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyastroprofile.ProfileDict.ProfileSection</span></code></a></p>
+<p>This class stores settings related to capturing
+sequences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.SequenceSettings.base_target_dir" title="pyastroprofile.SettingsProfile.SettingsProfile.SequenceSettings.base_target_dir"><strong>base_target_dir</strong></a> – Directory which sequences are stored under.</p>
+</dd>
+</dl>
+<p>This class stores settings related to capturing
+sequences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyastroprofile.SettingsProfile.SettingsProfile.SequenceSettings.base_target_dir" title="pyastroprofile.SettingsProfile.SettingsProfile.SequenceSettings.base_target_dir"><strong>base_target_dir</strong></a> – Directory which sequences are stored under.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="pyastroprofile.SettingsProfile.SettingsProfile.SequenceSettings.base_target_dir">
+<code class="sig-name descname">base_target_dir</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#pyastroprofile.SettingsProfile.SettingsProfile.SequenceSettings.base_target_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyastroprofile">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyastroprofile" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
 
-            <div class="clearer"></div>
+           </div>
+           
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="modules.html" class="btn btn-neutral float-left" title="pyastroprofile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Michael Fulbright
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-        </div>
-        <div class="sidebar">
-          
-          <h3>Table of Contents</h3>
-          
-          <div role="search">
-            <h3 style="margin-top: 1.5em;">Search</h3>
-            <form class="search" action="search.html" method="get">
-                <input type="text" name="q" />
-                <input type="submit" value="Go" />
-            </form>
-          </div>
 
-        </div>
-        <div class="clearer"></div>
-      </div>
-    </div>
+    </section>
 
-    <div class="footer-wrapper">
-      <div class="footer">
-        <div class="left">
-          <div role="navigation" aria-label="related navigaton">
-            <a href="genindex.html" title="General Index"
-              >index</a>
-          </div>
-          <div role="note" aria-label="source link">
-              <br/>
-              <a href="_sources/pyastroprofile.rst.txt"
-                rel="nofollow">Show Source</a>
-          </div>
-        </div>
+  </div>
+  
 
-        <div class="right">
-          
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Michael Fulbright.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
-    </div>
-        </div>
-        <div class="clearer"></div>
-      </div>
-    </div>
 
-  </body>
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
 </html>

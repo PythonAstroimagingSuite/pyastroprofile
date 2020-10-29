@@ -27,9 +27,11 @@ class EquipmentProfile(Profile):
 
     :param reldir: Path relative to the system configuration directory
                    to store the yaml settings file.
+
     :param name: The name of the settings file **WITHOUT** the '.yaml' extension.
 
     Currently the settings stored are:
+
         * backend
         * focuser
         * filterwheel
