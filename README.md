@@ -3,8 +3,8 @@ Python Astroimaging Suite
 
 Check out the PythonAstroimagingSuite at https://github.com/PythonAstroimagingSuite/.
 
-pyastrometry
-------------
+pyastroprofile
+--------------
 
 Python routines to manage settings for programs in the Python Astroimaging Suite.
 
