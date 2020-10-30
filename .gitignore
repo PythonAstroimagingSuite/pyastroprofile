@@ -7,4 +7,6 @@
 _templates
 _static
 _build
-
+.spyproject
+build
+pyastroprofile.egg-info
