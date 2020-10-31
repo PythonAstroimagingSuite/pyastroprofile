@@ -113,6 +113,7 @@ class SettingsProfile(Profile):
 #        :var exposure_max: Maximum exposure time (seconds) allowed
 #        :var exposure_min: Minimum exposure time (seconds) allowed
 #        :var final_offset: Value to be added to final focus position
+#        :var backlash: backlash compensation in steps
         start_hfd: float = 25.0
         near_hfd: float = 12.0
         focus_delay: float = 0.0
@@ -124,6 +125,7 @@ class SettingsProfile(Profile):
         final_offset: int = 0
         star_mag_for_filter: dict = field(default_factory=dict)
         focus_exposure_for_filter: dict = field(default_factory=dict)
+        backlash: int = 0
 
         # name of section in YAML output and attribute name
         _sectionname: str = 'autofocus'
